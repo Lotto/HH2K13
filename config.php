@@ -23,7 +23,8 @@ define("DEFAULT_APP", "home");
 $authorizedApps = array(
 	"home" 			=> "home",
 	"master" 		=> "master",
-	"new"			=> "new",
+	"projects" 		=> "projects",
+	"crop"			=> "crop",
 	"errors"		=> "errors");
 
 //Error Manage
