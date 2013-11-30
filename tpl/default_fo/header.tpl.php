@@ -15,7 +15,7 @@
     <link href="<?php echo WEBSITE_LINK ?>public/css/main.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link href="<?php echo WEBSITE_LINK ?>public/css/jumbotron-narrow.css" rel="stylesheet">
 </head>
 
 <body>
