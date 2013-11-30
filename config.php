@@ -6,9 +6,12 @@ define("WEBSITE_SNAME", "Les découpeurs");
 define("WEBSITE_LONG_NAME", WEBSITE_NAME." | ".WEBSITE_SNAME);
 define("WEBSITE_SMALL_NAME", " | ".WEBSITE_SNAME);
 
-define("WEBSITE_LINK", "http://ogre-rouen.fr/HH2K13/");
+define("WEBSITE_LINK", "http://piczle.me/");
+
+define("DS", DIRECTORY_SEPARATOR);
 if ( !defined("WEBSITE_PATH") )
-	define("WEBSITE_PATH", dirname(__FILE__) . "/");
+	define("WEBSITE_PATH", dirname(__FILE__) . DS);
+
 
 define("DATABASE_HOST", "localhost");
 define("DATABASE_NAME", "HH2K13"); 
