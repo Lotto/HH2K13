@@ -26,7 +26,7 @@ foreach($projects as $project){
 		echo '<div style="position: relative;background-image:url('.WEBSITE_LINK.'data'.DS.'master'.DS.$project->MASTER_ID.'.jpg);width: '.$project->MASTER_WIDTH.'px; height: '.$project->MASTER_HEIGHT.'px;">';
 	}
 	
-	echo '<a href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$project->CROP_ID.'"  style="display: block; position: absolute; left:'.$project->CROP_LEFT.'px; top: '.$project->CROP_TOP.'px;width: '.$project->CROP_WIDTH.'px; height: '.$project->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></a>';
+	echo '<a href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$project->CROP_ID.'" alt="Ajouter un piczle" style="display: block; position: absolute; left:'.$project->CROP_LEFT.'px; top: '.$project->CROP_TOP.'px;width: '.$project->CROP_WIDTH.'px; height: '.$project->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></a>';
 }
 
 require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php");
