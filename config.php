@@ -6,7 +6,8 @@ define("WEBSITE_SNAME", "Les découpeurs");
 define("WEBSITE_LONG_NAME", WEBSITE_NAME." | ".WEBSITE_SNAME);
 define("WEBSITE_SMALL_NAME", " | ".WEBSITE_SNAME);
 
-define("WEBSITE_LINK", "http://piczle.me/");
+$url = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+define("WEBSITE_LINK", 'http://'.$_SERVER['HTTP_HOST'].$url);
 
 define("DS", DIRECTORY_SEPARATOR);
 if ( !defined("WEBSITE_PATH") )
