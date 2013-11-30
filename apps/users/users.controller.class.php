@@ -22,15 +22,5 @@ class usersController{
 		header('Location: '.WEBSITE_LINK.'home');      
 		exit();  
 	}
-
-	function myprojects(){
-		$r = SPDO::getInstance()->prepare("SELECT * FROM  PROJECTS WHERE LOGIN = :LOGIN");
-		$r->setFetchMode(PDO::FETCH_OBJ);
-		$r->bindValue(':LOGIN', $_SESSION['login'], PDO::PARAM_STR);
-		$r->execute();
-		$myprojects = $r->fetchAll();
-
-		require_once("myprojects.view.php");
-	}
 }
 ?>
