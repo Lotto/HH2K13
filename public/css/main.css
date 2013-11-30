@@ -1,4 +1,11 @@
-img {
+.jumbotron img {
+    width: 200px;
+}
+.jumbotron .btn {
+    width: 49%;
+}
+
+.row img {
 	width: 100%;
 }
 .row > div {
