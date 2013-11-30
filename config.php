@@ -13,7 +13,7 @@ if ( !defined("WEBSITE_PATH") )
 define("DATABASE_HOST", "localhost");
 define("DATABASE_NAME", "HH2K13"); 
 define("DATABASE_LOGIN", "HH2K13");
-define("DATABASE_PASSWORD", "HH2K13");
+define("DATABASE_PASSWORD", "5fTdQzS9m3JhJx4M");
 
 //Authorized Apps
 define("DEFAULT_APP", "home");
