@@ -48,7 +48,7 @@ if(is_file('./apps/'.$appToCall.'/'.$appToCall.'.controller.class.php') ){
 		
 	$dispatcherToCall = $appToCall.'Controller';
 	$d = new $dispatcherToCall();
-	$d->params = $get;
+	$d->params = (isset($get) && !empty($get)) ? $get : array();
 	$d->$do();
 }
 else{
