@@ -1,4 +1,15 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php?arguments=$1 [L]
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+	RewriteBase /
+
+	ErrorDocument 404 /errors
+	
+	RewriteRule ^index\.php$ - [L]
+
+	RewriteRule ^errors$ index.php?app=errors [L]
+
+	RewriteRule ^home/([a-z]*)$ index.php?app=home&do=$1 [L]
+	RewriteRule ^master/([a-z]*)$ index.php?app=master&do=$1 [L]
+	
+</IfModule>
