@@ -7,7 +7,7 @@ echo '<div style="position:relative;background-image:url('.WEBSITE_LINK.'data'.D
 
 foreach($crops as $crop){
 
-	echo '<a href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$crop->CROP_ID.'" style="position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></a>';
+	echo '<a href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$crop->CROP_ID.'" alt="Voir les piczles" style="position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></a>';
 }
 
 echo '</div>';
