@@ -1,6 +1,6 @@
 @LottoJgk
 @ThibaudDauce
 <?php
-echo "fuz";
+echo "blah";
 echo "Hello world !";
 ?>
