@@ -19,8 +19,6 @@ class homeController{
 	}
 
 	function projects(){
-		$idMaster = (int) isset($this->params[0]) ? $this->params[0] : 0;
-
 		$r = SPDO::getInstance()->prepare("
 			SELECT 
 				PM.ID AS MASTER_ID, 
@@ -35,10 +33,8 @@ class homeController{
 			FROM PHOTOS_MASTER PM
 			LEFT JOIN PROJECTS P ON P.ID_MASTER=PM.ID
 			LEFT JOIN PROJECTS_CROP PC ON P.ID=PC.ID_PROJECT
-			WHERE PM.ID=:MASTER_ID
 			ORDER BY P.ID ASC");
 		$r->setFetchMode(PDO::FETCH_OBJ);
-		$r->bindValue(':MASTER_ID', $idMaster, PDO::PARAM_INT);
 		$r->execute();
 		$projects = $r->fetchAll();
 
