@@ -1,6 +1,8 @@
+<?php
+require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
+?>
+
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
-
-
 <script src="<?php echo WEBSITE_LINK; ?>tpl/js/jquery.js"></script>
 <script src="<?php echo WEBSITE_LINK; ?>tpl/js/dragOn/dragOn.src.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
@@ -23,3 +25,8 @@
 		<label for="subject">Titre de votre projet</label><input type="text" id="subject" name="subject" />
 		<input type="submit" onclick="genererFormulaire();" value="Créer mon projet !" />
 	</form>
+
+
+<?php
+require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php");
+?>
