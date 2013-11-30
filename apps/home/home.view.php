@@ -1,7 +1,9 @@
 <?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
 
 <div class="jumbotron">
-    <h1>Piczle Me</h1>
+    <a href="<?php echo WEBSITE_LINK ?>">
+        <img src="<?php echo WEBSITE_LINK ?>public/img/Piczle_Me_v02.png" alt="Piczle Me"/>
+    </a>
     <p class="lead"></p>
     <p>
         <a class="btn btn-success" href="<?php echo WEBSITE_LINK ?>master" role="button">Créer un projet</a>
