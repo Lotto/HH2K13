@@ -1,6 +1,15 @@
 <?php
 require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 
+if(isset($_SESSION['login'])){
+	if($myprojects == true){
+		echo '<a href="'.WEBSITE_LINK.'projects">Tous les projets</a>';
+	}
+	else{
+		echo '<a href="'.WEBSITE_LINK.'projects'.DS.'myprojects">Mes projets</a>';
+	}
+}
+
 $idCurrentProject = 0;
 
 foreach($projects as $project){

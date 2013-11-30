@@ -5,6 +5,7 @@ class masterController{
 	function master(){
 
 		$tailleMiniature = 255;
+		$tailleImage = 700;
 
 		if(!empty($_FILES['master']))
 		{
@@ -19,9 +20,10 @@ class masterController{
 			else
 			{
 				$imagine = new Imagine\Gd\Imagine();
-				$size = new Imagine\Image\Box($tailleMiniature, $tailleMiniature);
+				$sizeMiniature = new Imagine\Image\Box($tailleMiniature, $tailleMiniature);
+				$size = new Imagine\Image\Box($tailleImage, $tailleImage);
 				
-				$image = $imagine->open($image['tmp_name']);
+				$image = $imagine->open($image['tmp_name'])->thumbnail($size, 'inset');
 				$width = $image->getSize()->getWidth();
 				$height = $image->getSize()->getHeight();
 				
@@ -33,7 +35,7 @@ class masterController{
 				$id = SPDO::getInstance()->lastInsertId();
 				
 				$image->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'.jpg');
-				$image->thumbnail($size, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
+				$image->thumbnail($sizeMiniature, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
 				
 
 				header('Location: '.WEBSITE_LINK.'projects/create/'.$id);
