@@ -1,6 +1,4 @@
 <?php
-echo "Hello World !";
-
 
 //Session Load
 session_start();
