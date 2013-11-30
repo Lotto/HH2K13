@@ -13,6 +13,35 @@ class projectsController{
 		}
 	}
 
+	function valid(){
+
+		$r = SPDO::getInstance()->prepare("
+			SELECT 
+				PM.ID AS MASTER_ID, 
+				PM.WIDTH AS MASTER_WIDTH, 
+				PM.HEIGHT AS MASTER_HEIGHT,
+				P.ID AS PROJECT_ID,
+				P.SUBJECT AS PROJECT_SUBJECT,
+				P.LOGIN AS PROJECT_LOGIN,
+				PC.ID AS CROP_ID,
+				PC.LEFT AS CROP_LEFT,
+				PC.TOP AS CROP_TOP,
+				PC.WIDTH AS CROP_WIDTH,
+				PC.HEIGHT AS CROP_HEIGHT
+			FROM PHOTOS_MASTER PM
+			LEFT JOIN PROJECTS P ON P.ID_MASTER=PM.ID
+			LEFT JOIN PROJECTS_CROP PC ON P.ID=PC.ID_PROJECT
+			WHERE P.ID=:PROJECT_ID
+			ORDER BY P.ID ASC");
+
+		$r->setFetchMode(PDO::FETCH_OBJ);
+		$r->bindValue(':PROJECT_ID', $this->params[0], PDO::PARAM_INT);
+		$r->execute();
+		$crops = $r->fetchAll();
+
+		require_once("valid.view.php");
+	}
+
 	function projects($myprojects = false){
 
 		$sqlWhere = ($myprojects==true) ? ' WHERE P.LOGIN = :LOGIN ' : '' ;
@@ -24,6 +53,7 @@ class projectsController{
 				PM.HEIGHT AS MASTER_HEIGHT,
 				P.ID AS PROJECT_ID,
 				P.SUBJECT AS PROJECT_SUBJECT,
+				P.LOGIN AS PROJECT_LOGIN,
 				PC.ID AS CROP_ID,
 				PC.LEFT AS CROP_LEFT,
 				PC.TOP AS CROP_TOP,

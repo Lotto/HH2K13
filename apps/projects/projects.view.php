@@ -20,7 +20,14 @@ foreach($projects as $project){
 			echo '</div>';
 		}
 		$idCurrentProject = $project->PROJECT_ID;
-		echo '<h1>'.$project->PROJECT_SUBJECT.'</h1>';
+
+		if(isset($_SESSION['login']) && $project->PROJECT_LOGIN == $_SESSION['login']) {
+			echo '<h1>'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.' <a href="'.WEBSITE_LINK.'projects'.DS.'valid'.DS.$project->PROJECT_ID.'">Valider ce projet</a></h1>';
+		}
+		else{
+			echo '<h1>'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.' </h1>';
+		}
+		
 		echo '<div style="background-image:url('.WEBSITE_LINK.'data'.DS.'master'.DS.$project->MASTER_ID.'.jpg);width: '.$project->MASTER_WIDTH.'px; height: '.$project->MASTER_HEIGHT.'px;">';
 	}
 	
