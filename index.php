@@ -16,8 +16,8 @@ function __autoload($class_name) {
 
 
 //Dispatcher
-if (isset($_GET['arguments'] AND !empty($_GET['arguments']))) {
-	
+if (isset($_GET['arguments']) AND !empty($_GET['arguments'])) {
+
 	$get = explode('/', $_GET['arguments']);
 	$getApp = (isset($get[0]) && !empty($get[0])) ? $get[0] : '';
 	$getDo = (isset($get[1]) && !empty($get[1])) ? $get[1] : '';
