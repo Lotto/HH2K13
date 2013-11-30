@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 //Session Load
 session_start();
 
@@ -41,7 +44,6 @@ if(is_file('./apps/'.$appToCall.'/'.$appToCall.'.controller.class.php') ){
 	require_once(WEBSITE_PATH.'apps/'.$appToCall.'/'.$appToCall.'.controller.class.php');
 		
 	$dispatcherToCall = $appToCall.'Controller';
-	debug($get);
 	$d = new $dispatcherToCall();
 	$d->params = $get;
 	$d->$do();
