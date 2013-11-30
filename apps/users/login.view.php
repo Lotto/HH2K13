@@ -1,4 +1,4 @@
-<form class="form" role="form" method="post" action="">
+<form class="form" role="form" method="post" action="<?php echo WEBSITE_LINK ?>users/login">
   <div class="form-group">
     <label class="" for="login">Login</label>
     <input type="login" class="form-control" name="login" id="login" placeholder="Enter login">

@@ -24,7 +24,7 @@
 
     <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/dragOn/dragOn.src.js"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/crop.js"></script>
     <script type="text/javascript">
         $(function() {
