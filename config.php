@@ -6,7 +6,8 @@ define("WEBSITE_SNAME", "Les découpeurs");
 define("WEBSITE_LONG_NAME", WEBSITE_NAME." | ".WEBSITE_SNAME);
 define("WEBSITE_SMALL_NAME", " | ".WEBSITE_SNAME);
 
-define("WEBSITE_LINK", "http://piczle.me/");
+//define("WEBSITE_LINK", "http://piczle.me/");
+define("WEBSITE_LINK", "http://localhost/HH2K13/");
 
 define("DS", DIRECTORY_SEPARATOR);
 if ( !defined("WEBSITE_PATH") )
@@ -25,6 +26,7 @@ $authorizedApps = array(
 	"master" 		=> "master",
 	"projects" 		=> "projects",
 	"crop"			=> "crop",
+	"users"			=> "users",
 	"errors"		=> "errors");
 
 //Error Manage
