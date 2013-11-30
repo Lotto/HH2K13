@@ -1,17 +1,31 @@
 $(document).ready(function()
 {
-    var id=1;
+    var id = 1;
+
     $('#ajouter').on('click', function() {
 
-        $('#mainPhoto').append($('<div class="sousPhoto" id="sousPhoto'+id+'"></div>'));
-        var draggable = document.getElementById('sousPhoto'+id);
-        var options =  {
-            moveArea : document.getElementById('mainPhoto'),
-            cssPosition : 'fixed',
-        };
-        dragOn.apply( draggable, options );
+		var dynamic_div = $(document.createElement('div')).css({ border: '1px dashed', position: 'absolute', left: 10, top: 10, width: '120', height: '120', padding: '3', margin: '0' });
+		$(dynamic_div).attr('id', 'sousPhoto'+id);
+		$(dynamic_div).attr('class', 'sousPhoto');
 
-        $('#sousPhoto'+id).resizable();
+		$(dynamic_div).appendTo('#mainPhoto').draggable({containment: "parent"}).resizable(); 
+        
+        // var draggable = document.getElementById('sousPhoto'+id);
+        // var options =  {
+        //     moveArea : document.getElementById('mainPhoto')
+        // };
+        // dragOn.apply( draggable, options );
+
+        // $('#sousPhoto'+id).draggable().resizable();
+     //    $('#sousPhoto'+id).draggable({ 
+     //    	create: function( event, ui ) {
+     //    		$(this).css({
+     //        		top: $(this).position().top,
+     //        		bottom: "auto"
+     //    		});
+    	// 	},
+    	// 	containment: "parent" 
+    	// });
         id = id + 1;
     });
 });
