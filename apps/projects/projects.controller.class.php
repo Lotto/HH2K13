@@ -21,10 +21,11 @@ class projectsController{
 			
 			if (!empty($_POST['subject']) AND count($_POST) > 1) {
 
-				$insert = SPDO::getInstance()->prepare("INSERT INTO PROJECTS(ID_MASTER, SUBJECT) VALUES(:idMaster, :subject)");
+				$insert = SPDO::getInstance()->prepare("INSERT INTO PROJECTS(ID_MASTER, SUBJECT, LOGIN) VALUES(:idMaster, :subject, :login)");
 				$insert->execute(array(
 						'idMaster' => $idMaster,
-						'subject'  => $_POST['subject']
+						'subject'  => $_POST['subject'],
+						'login' => $_SESSION['login']
 					));
 
 				$idProject = SPDO::getInstance()->lastInsertId();
