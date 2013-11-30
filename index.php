@@ -16,10 +16,13 @@ function __autoload($class_name) {
 
 
 //Dispatcher
-$get = explode('/', $_GET['arguments']);
-$getApp = (isset($get[0]) && !empty($get[0])) ? $get[0] : '';
-$getDo = (isset($get[1]) && !empty($get[1])) ? $get[1] : '';
-$get = array_slice($get, '2');
+if (isset($_GET['arguments']) AND !empty($_GET['arguments'])) {
+
+	$get = explode('/', $_GET['arguments']);
+	$getApp = (isset($get[0]) && !empty($get[0])) ? $get[0] : '';
+	$getDo = (isset($get[1]) && !empty($get[1])) ? $get[1] : '';
+	$get = array_slice($get, '2');
+}
 
 if(isset($getApp) && !empty($getApp)){
 	if(array_key_exists($getApp, $authorizedApps)){
