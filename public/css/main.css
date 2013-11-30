@@ -5,6 +5,12 @@
     width: 49%;
 }
 
+.jumbotron .login {
+    float: right;
+    margin-right: -50px;
+    margin-top: -50px;
+}
+
 .row img {
 	width: 100%;
 }

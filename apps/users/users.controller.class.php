@@ -17,6 +17,7 @@ class usersController{
 	}
 
 	function logout(){
+        unset($_SESSION['login']);
 		session_destroy();
 		header('Location: '.WEBSITE_LINK.'home');      
 		exit();  

@@ -1,6 +1,17 @@
 <?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
 
 <div class="jumbotron">
+    <div class="login">
+        <?php if (isset($_SESSION["login"])): ?>
+            <a href="<?php echo WEBSITE_LINK ?>users/logout">
+                <li class="glyphicon glyphicon-off"></li>
+            </a>
+        <?php else: ?>
+            <a href="<?php echo WEBSITE_LINK ?>users/login">
+                <li class="glyphicon glyphicon-user"></li>
+            </a>
+        <?php endif; ?>
+    </div>
     <a href="<?php echo WEBSITE_LINK ?>">
         <img src="<?php echo WEBSITE_LINK ?>public/img/Piczle_Me_v02.png" alt="Piczle Me"/>
     </a>
