@@ -21,8 +21,8 @@
 
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.css" />
 
-
-    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/jquery.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/dragOn/dragOn.src.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
