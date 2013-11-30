@@ -9,12 +9,7 @@ class homeController{
 		$r->setFetchMode(PDO::FETCH_OBJ);
 		$r->execute();
 		$photosMaster = $r->fetchAll();
-
-		//use Imagine\Image\ImageInterface;
-		//require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');
-		//$imagine = new Imagine\Gd\Imagine();
-		//$image = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'master'.DS.'1.jpg');
-
+		
 		require_once("home.view.php");
 	}
 
@@ -26,6 +21,7 @@ class homeController{
 				PM.HEIGHT AS MASTER_HEIGHT,
 				P.ID AS PROJECT_ID,
 				P.SUBJECT AS PROJECT_SUBJECT,
+				PC.ID AS CROP_ID,
 				PC.LEFT AS CROP_LEFT,
 				PC.TOP AS CROP_TOP,
 				PC.WIDTH AS CROP_WIDTH,
