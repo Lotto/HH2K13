@@ -46,7 +46,6 @@ class cropController{
 					$id = SPDO::getInstance()->lastInsertId();
 					
 					$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'.jpg');
-					$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
 					
 					header('Location: '.WEBSITE_LINK);
 				}
