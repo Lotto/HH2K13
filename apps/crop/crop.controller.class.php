@@ -11,12 +11,13 @@ class cropController{
 		$r->setFetchMode(PDO::FETCH_OBJ);
 		$r->execute(array($idCrop));
 		$crops = $r->fetchAll();
+
 		if (!empty($crops))
 			$crop = $crops[0];
 		else
-			$message = "Cet identifiant n'est associé à aucun crop.";
+			$erreurFatale = "Aïe :( Cet identifiant n'est associé à aucun crop. <a href=\"".WEBSITE_LINK.projects"\">Retournez à la page des projets ?</a>";
 
-		debug($crop);
+		$message = "Propose nous ton Piczle de ".$crop->WIDTH."px de long par ".$crop->HEIGHT."px de hauteur !";
 
 		if(!empty($_FILES['piczle']))
 		{
@@ -26,7 +27,7 @@ class cropController{
 			$image = $_FILES['piczle'];
 
 			if (empty($image['tmp_name']))
-				$message = 'Impossible de récupérer votre Piczle';
+				$erreur = 'Oh... :( Impossible de récupérer votre Piczle';
 			else
 			{
 				$imagine = new Imagine\Gd\Imagine();
@@ -36,7 +37,7 @@ class cropController{
 				$height = $image->getSize()->getHeight();
 				
 				if ($width != $crop->WIDTH OR $height != $crop->HEIGHT)
-					$message = "Votre Piczle ne fait pas la bonne taille :( Assurez de vous de fournir un Piczle de ".$crop->WIDTH."px de long par ".$crop->HEIGHT."px de hauteur";
+					$erreur = "Votre Piczle ne fait pas la bonne taille :( Assurez de vous de fournir un Piczle de ".$crop->WIDTH."px de long par ".$crop->HEIGHT."px de hauteur";
 				else {
 
 					$insert = SPDO::getInstance()->prepare("INSERT INTO PHOTOS_CROP(ID_CROP) VALUES(:idCrop)");
@@ -45,7 +46,12 @@ class cropController{
 						));
 					$id = SPDO::getInstance()->lastInsertId();
 					
-					$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'.jpg');
+					try {
+
+						$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'.jpg');
+					} catch (Exception $e) {
+						$erreur = "Impossible d'enregistrer votre Piczle :( Veuillez réessayer plus tard.";
+					}
 					
 					header('Location: '.WEBSITE_LINK);
 				}
