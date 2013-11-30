@@ -34,7 +34,8 @@ class projectsController{
 					if ($key != 'subject') {
 						
 						debug($crop);
-						$insertCrop = SPDO::getInstance()->prepare("INSERT INTO PROJECTS_CROP(ID_PROJECT, WIDTH, HEIGHT, LEFT, TOP) VALUES (:idProject, :width, :height, :left, :top)");
+						$insertCrop = SPDO::getInstance()->prepare("INSERT INTO `PROJECTS_CROP`(`ID_PROJECT`, `WIDTH`, `HEIGHT`, `LEFT`, `TOP`) VALUES (:idProject,:width,:height,:left,:top)");
+
 						$insertCrop->execute(array(
 								'idProject' => $idProject,
 								'width'     => $crop['width'],
