@@ -31,14 +31,14 @@ class masterController{
 					'width' => $width,
 					'height' => $height
 					));
-                $id = SPDO::getInstance()->lastInsertId();
+				$id = SPDO::getInstance()->lastInsertId();
 				
 				$image->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'.jpg');
 				$image->thumbnail($size, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
 				
 
-                header('Location: '.WEBSITE_LINK.'projects/create/'.$id);
-            }
+				header('Location: '.WEBSITE_LINK.'projects/create/'.$id);
+			}
 		}
 
 		require_once("master.view.php");
