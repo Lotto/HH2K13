@@ -1,5 +1,4 @@
 <?php
-
 //Session Load
 session_start();
 
@@ -32,7 +31,7 @@ else{
 
 //Master Controller
 if(is_file('./apps/'.$appToCall.'/'.$appToCall.'.controller.class.php') ){
-	
+
 	require_once(WEBSITE_PATH.'apps/'.$appToCall.'/'.$appToCall.'.controller.class.php');
 		
 	$dispatcherToCall = $appToCall.'Controller';

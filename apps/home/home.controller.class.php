@@ -5,4 +5,5 @@ class homeController{
 				
 		require_once("home.view.php");
 	}
+}
 ?>
