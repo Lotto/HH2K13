@@ -3,12 +3,19 @@ class projectsController{
 	public $params = array();
 
 	function myprojects(){
-		$this->projects(true);
+
+		if(isset($_SESSION['login'])){
+			$this->projects(true);
+		}
+		else{			
+			header('Location: '.WEBSITE_LINK.'projects');      
+			exit();  
+		}
 	}
 
 	function projects($myprojects = false){
 
-		$sqlWhere = ($myprojects==true) ? '' : ' WHERE P.LOGIN = :LOGIN ' ;
+		$sqlWhere = ($myprojects==true) ? ' WHERE P.LOGIN = :LOGIN ' : '' ;
 
 		$r = SPDO::getInstance()->prepare("
 			SELECT 
@@ -27,6 +34,7 @@ class projectsController{
 			LEFT JOIN PROJECTS_CROP PC ON P.ID=PC.ID_PROJECT
 			".$sqlWhere."
 			ORDER BY P.ID ASC");
+
 		$r->setFetchMode(PDO::FETCH_OBJ);
 		if($myprojects==true){
 			$r->bindValue(':LOGIN', $_SESSION['login'], PDO::PARAM_STR);
