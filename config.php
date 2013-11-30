@@ -26,6 +26,7 @@ $authorizedApps = array(
 	"master" 		=> "master",
 	"projects" 		=> "projects",
 	"crop"			=> "crop",
+	"users"			=> "users",
 	"errors"		=> "errors");
 
 //Error Manage
