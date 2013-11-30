@@ -1,5 +1,4 @@
 <?php
-use Imagine\Image\ImageInterface;
 class masterController{
 	public $params = array();
 
@@ -10,18 +9,18 @@ class masterController{
 		if(!empty($_FILES['master']))
 		{
 			require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');
-
+			require_once(WEBSITE_PATH.DS.'inc'.DS.'class'.DS.'SPDO.class.php');
+			
 			$image = $_FILES['master'];
-
-			$imagine = new Imagine\Gd\Imagine();
-
-			$size = new Imagine\Image\Box($tailleMiniature, $tailleMiniature);
 
 			if (empty($image['tmp_name'])) {
 				$message = 'Impossible de récupérer votre image';
 			}
 			else
 			{
+				$imagine = new Imagine\Gd\Imagine();
+				$size = new Imagine\Image\Box($tailleMiniature, $tailleMiniature);
+				
 				$image = $imagine->open($image['tmp_name']);
 				$width = $image->getSize()->getWidth();
 				$height = $image->getSize()->getHeight();
