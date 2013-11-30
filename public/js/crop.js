@@ -18,19 +18,24 @@ $(document).ready(function()
 
 function genererFormulaire(){ 
 
+	var positionMaster = $('#mainPhoto').offset();
+
 	if ( verifierSousPhotos() ) {
 
 		$('.sousPhoto').each(function(i){
 
 			var id = i + 1;
 			var sousPhoto = document.getElementById('sousPhoto'+id);
-			var positionSousPhoto = getPos(sousPhoto);
+			var positionSousPhoto = $('#sousPhoto'+id).offset();
 
-			$('#form').append($('<input type="hidden" name="photos' + id + '[top]" value="' + positionSousPhoto.t + '">'));
-			$('#form').append($('<input type="hidden" name="photos' + id + '[left]" value="' + positionSousPhoto.l + '">'));
+			var top = positionSousPhoto.top - positionMaster.top;
+			var left = positionSousPhoto.left - positionMaster.left;
 
-			var width = positionSousPhoto.r - positionSousPhoto.l;
-			var height = positionSousPhoto.b - positionSousPhoto.t;
+			$('#form').append($('<input type="hidden" name="photos' + id + '[top]" value="' + top + '">'));
+			$('#form').append($('<input type="hidden" name="photos' + id + '[left]" value="' + left + '">'));
+
+			var width = $('#sousPhoto'+id).width();
+			var height = $('#sousPhoto'+id).height();
 			$('#form').append($('<input type="hidden" name="photos' + id + '[width]" value="' + width + '">'));
 			$('#form').append($('<input type="hidden" name="photos' + id + '[height]" value="' + height + '">'));
 		}); 

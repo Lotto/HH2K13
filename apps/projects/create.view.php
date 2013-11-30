@@ -2,7 +2,7 @@
 require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 ?>
 
-<button id="ajouter">Ajoutez une sous photo</button>
+<button id="ajouter">Ajoutez un crop de Piczle</button>
 	<section id="mainPhoto" style="background-image: url('<?php echo WEBSITE_LINK; ?>data/master/<?php echo $photoMaster->ID; ?>.jpg'); width:<?php echo $photoMaster->WIDTH; ?>px; height:<?php echo $photoMaster->HEIGHT; ?>px"></section>
 
 	<form action="" method="post" id="form">
