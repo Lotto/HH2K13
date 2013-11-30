@@ -12,10 +12,17 @@
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo WEBSITE_LINK ?>public/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo WEBSITE_LINK ?>public/css/ui-lightness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
     <link href="<?php echo WEBSITE_LINK ?>public/css/main.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="<?php echo WEBSITE_LINK ?>public/css/jumbotron-narrow.css" rel="stylesheet">
+
+
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/dragOn.src.js"></script>
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/crop.js"></script>
 </head>
 
 <body>

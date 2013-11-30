@@ -17,3 +17,11 @@
 .row > div {
 	margin-top: 7px;
 }
+
+.sousPhoto{
+    float: left;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(234, 136, 37, 0.5);
+    position: absolute;
+}
