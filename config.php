@@ -22,6 +22,7 @@ define("DATABASE_PASSWORD", "5fTdQzS9m3JhJx4M");
 define("DEFAULT_APP", "home");
 $authorizedApps = array(
 	"home" 			=> "home",
+	"master" 		=> "master",
 	"new"			=> "new",
 	"errors"		=> "errors");
 
