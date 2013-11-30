@@ -1,6 +1,6 @@
 <?php
 class projectsController{
-	
+
 	public $params = array();
 
 	function myprojects(){
@@ -14,7 +14,7 @@ class projectsController{
 		}
 	}
 
-	function valid(){
+	function view(){
 
 		$r = SPDO::getInstance()->prepare("
 			SELECT 
@@ -40,7 +40,19 @@ class projectsController{
 		$r->execute();
 		$crops = $r->fetchAll();
 
-		require_once("valid.view.php");
+		$r = SPDO::getInstance()->prepare("
+			SELECT ID, ID_CROP
+			FROM PHOTOS_CROP			
+			WHERE ID_CROP IN (SELECT ID FROM PROJECTS_CROP WHERE ID_PROJECT=:PROJECT_ID)
+			ORDER BY ID_CROP ASC");
+
+		$r->setFetchMode(PDO::FETCH_OBJ);
+		$r->bindValue(':PROJECT_ID', $this->params[0], PDO::PARAM_INT);
+		$r->execute();
+		$photosCrop = $r->fetchAll();
+
+
+		require_once("view.view.php");
 	}
 
 	function projects($myprojects = false){
@@ -94,7 +106,7 @@ class projectsController{
 				$insert->execute(array(
 						'idMaster' => $idMaster,
 						'subject'  => $_POST['subject'],
-						'login' => $_SESSION['login']
+						'login' => (isset($_SESSION['login']) && !empty($_SESSION['login'])) ? $_SESSION['login'] : 'visiteur'
 					));
 
 				$idProject = SPDO::getInstance()->lastInsertId();
@@ -103,7 +115,6 @@ class projectsController{
 					
 					if ($key != 'subject') {
 						
-						debug($crop);
 						$insertCrop = SPDO::getInstance()->prepare("INSERT INTO `PROJECTS_CROP`(`ID_PROJECT`, `WIDTH`, `HEIGHT`, `LEFT`, `TOP`) VALUES (:idProject,:width,:height,:left,:top)");
 
 						$insertCrop->execute(array(
@@ -115,6 +126,9 @@ class projectsController{
 							));
 					}
 				}
+
+				header('Location: '.WEBSITE_LINK.'home');      
+				exit();  
 			}
 			else {
 

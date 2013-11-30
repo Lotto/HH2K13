@@ -1,7 +1,7 @@
 <?php
 require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 
-echo '<h1>'.$crops[0]->PROJECT_SUBJECT.' - '.$crops[0]->PROJECT_LOGIN.'</h1>';
+echo '<h2>'.$crops[0]->PROJECT_SUBJECT.' - '.$crops[0]->PROJECT_LOGIN.'</h2>';
 
 echo '<div style="background-image:url('.WEBSITE_LINK.'data'.DS.'master'.DS.$crops[0]->MASTER_ID.'.jpg);width: '.$crops[0]->MASTER_WIDTH.'px; height: '.$crops[0]->MASTER_HEIGHT.'px;">';
 
@@ -11,6 +11,11 @@ foreach($crops as $crop){
 }
 
 echo '</div>';
+
+
+foreach($photosCrop as $photoCrop){
+	echo '<a href="#"><img src="'.WEBSITE_LINK.'data'.DS.'piczle'.DS.$photoCrop->ID.'.jpg" alt="photo"/></a>';
+}
 
 require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php");
 ?>

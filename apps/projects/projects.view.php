@@ -3,10 +3,10 @@ require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 
 if(isset($_SESSION['login'])){
 	if($myprojects == true){
-		echo '<a href="'.WEBSITE_LINK.'projects">Tous les projets</a>';
+		echo '<strong>Filtre</strong> : <a href="'.WEBSITE_LINK.'projects">Tous les projets</a> - Mes projets';
 	}
 	else{
-		echo '<a href="'.WEBSITE_LINK.'projects'.DS.'myprojects">Mes projets</a>';
+		echo '<strong>Filtre</strong> : Tous les projets - <a href="'.WEBSITE_LINK.'projects'.DS.'myprojects">Mes projets</a>';
 	}
 }
 
@@ -21,13 +21,8 @@ foreach($projects as $project){
 		}
 		$idCurrentProject = $project->PROJECT_ID;
 
-		if(isset($_SESSION['login']) && $project->PROJECT_LOGIN == $_SESSION['login']) {
-			echo '<h1>'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.' <a href="'.WEBSITE_LINK.'projects'.DS.'valid'.DS.$project->PROJECT_ID.'">Valider ce projet</a></h1>';
-		}
-		else{
-			echo '<h1>'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.' </h1>';
-		}
-		
+		echo '<h2><a href="'.WEBSITE_LINK.'projects'.DS.'view'.DS.$project->PROJECT_ID.'">'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.'</a></h2>';
+				
 		echo '<div style="background-image:url('.WEBSITE_LINK.'data'.DS.'master'.DS.$project->MASTER_ID.'.jpg);width: '.$project->MASTER_WIDTH.'px; height: '.$project->MASTER_HEIGHT.'px;">';
 	}
 	
