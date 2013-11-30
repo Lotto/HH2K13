@@ -41,7 +41,9 @@ class masterController{
 					'width' => $width,
 					'height' => $height
 					));
-			}
+                $id = SPDO::getInstance()->lastInsertId();
+                header('Location: '.WEBSITE_LINK.'projects/create/'.$id);
+            }
 		}
 
 		require_once("master.view.php");
