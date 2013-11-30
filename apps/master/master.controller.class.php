@@ -3,9 +3,22 @@ class masterController{
 	public $params = array();
 
 	function master(){
-
 		$tailleMiniature = 255;
 		$tailleImage = 700;
+
+        if (!empty($_POST['master'])) { // AJAX DRAG & DROP
+            $file = $_POST['master'];
+            $path = "/tmp/".md5(rand().time()).'.jpg';
+
+            // Encode it correctly
+            $encodedData = str_replace(' ','+',$file);
+            $decodedData = base64_decode($encodedData);
+
+            // Finally, save the image
+            file_put_contents($path, $decodedData) ;
+
+            $_FILES['master']["tmp_name"] = $path;
+        }
 
 		if(!empty($_FILES['master']))
 		{
@@ -36,9 +49,14 @@ class masterController{
 				
 				$image->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'.jpg');
 				$image->thumbnail($sizeMiniature, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
-				
 
-				header('Location: '.WEBSITE_LINK.'projects/create/'.$id);
+                $link = WEBSITE_LINK.'projects/create/'.$id;
+                if (!empty($_POST['master'])) {
+                    echo $link;
+                    exit;
+                } else {
+				    header('Location: '.$link);
+                }
 			}
 		}
 
