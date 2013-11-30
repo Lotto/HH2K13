@@ -1,5 +1,6 @@
 <?php
 class projectsController{
+	
 	public $params = array();
 
 	function myprojects(){
