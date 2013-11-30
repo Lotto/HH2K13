@@ -1,4 +1,3 @@
-<?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
 <form class="form" role="form" method="post" action="">
   <div class="form-group">
     <label class="" for="login">Login</label>
@@ -10,4 +9,3 @@
   </div>
   <button type="submit" class="btn btn-default">Sign in</button>
 </form>
-<?php require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php"); ?>

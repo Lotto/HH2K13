@@ -19,12 +19,24 @@
 
 
 
-    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/smoothness/jquery-ui.css" />
-    <script src="<?php echo WEBSITE_LINK; ?>public/js/jquery.js"></script>
-    <script src="<?php echo WEBSITE_LINK; ?>public/js/dragOn/dragOn.src.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-lightness/jquery-ui.css" />
+
+
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/dragOn/dragOn.src.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
-    <script src="<?php echo WEBSITE_LINK; ?>public/js/crop.js"></script>
+    <script type="text/javascript" src="<?php echo WEBSITE_LINK; ?>public/js/crop.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("a.login-link").click(function() {
+                $("<div>").load("<?php echo WEBSITE_LINK ?>users/login").dialog({
+                    title:"Connexion",
+                    modal: true
+                });
+                return false;
+            })
+        })
+    </script>
 </head>
 
 <body>
@@ -37,7 +49,7 @@
                         <li class="glyphicon glyphicon-off"></li>
                     </a>
                 <?php else: ?>
-                    <a href="<?php echo WEBSITE_LINK ?>users/login">
+                    <a class="login-link" href="#">
                         <li class="glyphicon glyphicon-user"></li>
                     </a>
                 <?php endif; ?>
