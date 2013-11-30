@@ -2,7 +2,13 @@
 class projectsController{
 	public $params = array();
 
-	function projects(){
+	function myprojects(){
+		$this->projects(true);
+	}
+
+	function projects($myprojects = false){
+
+		$sqlWhere = ($myprojects==true) ? '' : ' WHERE P.LOGIN = :LOGIN ' ;
 
 		$r = SPDO::getInstance()->prepare("
 			SELECT 
@@ -19,8 +25,12 @@ class projectsController{
 			FROM PHOTOS_MASTER PM
 			LEFT JOIN PROJECTS P ON P.ID_MASTER=PM.ID
 			LEFT JOIN PROJECTS_CROP PC ON P.ID=PC.ID_PROJECT
+			".$sqlWhere."
 			ORDER BY P.ID ASC");
 		$r->setFetchMode(PDO::FETCH_OBJ);
+		if($myprojects==true){
+			$r->bindValue(':LOGIN', $_SESSION['login'], PDO::PARAM_STR);
+		}
 		$r->execute();
 		$projects = $r->fetchAll();
 
