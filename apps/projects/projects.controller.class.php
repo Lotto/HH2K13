@@ -78,7 +78,7 @@ class projectsController{
 			FROM PROJECTS P
 			LEFT JOIN PHOTOS_MASTER PM ON PM.ID=P.ID_MASTER
 			".$sqlWhere."
-			ORDER BY P.ID DESC");
+			ORDER BY NB_CONTRIB DESC");
 
 		$r->setFetchMode(PDO::FETCH_OBJ);
 		if($myprojects==true){
