@@ -171,6 +171,7 @@ class projectsController{
 			}
 		}
         
+        $titre = "Définis tes crops' Piczle :)";
         require_once("create.view.php");
 	}
 

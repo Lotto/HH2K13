@@ -68,17 +68,16 @@
 				<div id="bubble">
 					<span id="text">
 						<?php if (isset($titre) AND !empty($titre)): ?>
-							<?php echo $titre; ?>
+							<?php echo $titre; unset($titre); ?>
 						<?php elseif (flashExist()): ?>				
 							<?php getFlash(); ?>
 						<?php elseif (isset($message) AND !empty($message)): ?>
-							<?php echo $message; ?>
+							<?php echo $message; unset($titre); ?>
 						<?php elseif (isset($_SESSION["login"])): ?>
 							Bonjour <?php echo $_SESSION["login"]; ?> !
 						<?php else: ?>
 							Bonjour visiteur !
 						<?php endif ?>
-						<?php echo (isset($titre) AND !empty($titre)) ? $titre : getFlash(); ?>
 					</span>
 					<span id="arrow_border"></span>
 					<span id="arrow_inner"></span>
