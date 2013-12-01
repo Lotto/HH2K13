@@ -148,6 +148,8 @@ class projectsController{
 				$erreur = "N'oublie pas de renseigner un titre et au moins un crop' Piczle.";
 			}
 		}
+        
+        require_once("create.view.php");
 	}
 
 	function validate() {
