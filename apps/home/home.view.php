@@ -37,7 +37,7 @@ foreach($finalPhotos as $finalPhoto) {
                         } else {
                             $(this).attr("src", src);
                         }
-                    })qq
+                    })
                     .dialog({
                         modal: true,
                         width: "90%",
