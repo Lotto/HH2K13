@@ -35,7 +35,17 @@
                     modal: true
                 });
                 return false;
-            })
+            });
+            if (document.location != "<?php echo WEBSITE_LINK ?>") {
+                $(".jumbotron .login")
+                    .css('margin', '0')
+                    .css('margin-right', '10px');
+                $(".jumbotron")
+                    .css('padding', '0')
+                    .css('padding-top', '7px');
+                $(".jumbotron p")
+                    .hide();
+            }
         })
     </script>
 </head>
@@ -55,7 +65,7 @@
                     </a>
                 <?php endif; ?>
             </div>
-            <a href="<?php echo WEBSITE_LINK ?>">
+            <a class="logo" href="<?php echo WEBSITE_LINK ?>">
                 <img src="<?php echo WEBSITE_LINK ?>public/img/Piczle_Me_v02.png" alt="Piczle Me"/>
             </a>
             <p class="lead"></p>
