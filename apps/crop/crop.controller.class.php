@@ -67,14 +67,10 @@ class cropController{
 						} catch (Exception $e) {
 							$erreur = "Impossible d'enregistrer votre Piczle :( Veuillez réessayer plus tard.";
 						}
-						if (!empty($_POST['piczle'])) {
 
-							echo WEBSITE_LINK;
-							exit;
-						} else {
-
-							header('Location: '.WEBSITE_LINK);
-						}
+                        $message = "Votre Piczle a bien été envoyé ! Félicitations !";
+                        setFlash($message);
+                        header('Location: '.WEBSITE_LINK);
 					}
 
 				}

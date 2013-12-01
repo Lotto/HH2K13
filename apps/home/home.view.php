@@ -2,12 +2,12 @@
 
 <div class="row">
 <?php
-foreach($photosMaster as $master) {
+foreach($finalPhotos as $finalPhoto) {
     echo '<div class="col-lg-6">';
-    echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$master->ID.'.jpg" alt="Photo">';
+    echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" alt="Photo">';
     echo '</div>';
     echo '<div class="col-lg-6">';
-    echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$master->ID.'.jpg" alt="Photo">';
+    echo '<img src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" alt="Photo">';
     echo '</div>';
 }
 ?>

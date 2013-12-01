@@ -93,19 +93,8 @@
                 reader.readAsDataURL(f);
             }
             function handleReaderLoad(evt) {
-                var pic = {};
-                pic.piczle = evt.target.result.split(',')[1];
-
-                var str = jQuery.param(pic);
-
-                $.ajax({
-                    type: 'POST',
-                    url: document.location,
-                    data: str,
-                    success: function(data) {
-                        document.location = data;
-                    }
-                });
+                var piczle = evt.target.result.split(',')[1];
+                $("form").append($("<input>").attr("name", "piczle").val(piczle)).submit();
             }
             $("#dropfile").click(function() {
                 $("input[type=file]").click();
