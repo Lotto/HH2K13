@@ -19,6 +19,8 @@
 	<?php endif ?>
 
 	<h1>Uploader mon Piczle</h1>
+	
+	<a class="btn btn-success" href="<?php echo WEBSITE_LINK; ?>data/crop/<?php echo $idCrop; ?>.jpg">Télécharger le modèle</a>
 
     <div id="dropfile">
         <p>Déposer une image de votre ordinateur</p>

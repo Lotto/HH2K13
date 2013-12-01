@@ -1,6 +1,12 @@
 .jumbotron img {
     width: 200px;
 }
+
+.btn {
+
+    margin-bottom: 15px;
+}
+
 .jumbotron .btn, form .btn {
     width: 49%;
 }
