@@ -31,17 +31,24 @@ $(document).ready(function(){
 <style type="text/css">
 .photosCropDiv {
     height:300px;
-    background-color: #99CCFF;
     padding:20px;
     margin-top:10px;
-    border-bottom:5px solid #3399FF;
+    background-color: #eeeeee;
+    border-radius: 5px;
+    height: auto;
 }
 
-.photosCropDiv div{
+.photosCropDiv div {
 	float: left;
 	cursor: pointer;
+    max-width: 22%;
+    margin-right: 7px;
 }
  
+.photosCropDiv div img {
+    width: 100%;
+}
+
 .showPhotosCropDiv {
     display:none;
 }
@@ -57,6 +64,10 @@ border : none;
 	opacity:0.5;
 	border: 1px solid red;
 }
+
+.btn {
+    margin-top: 7px;
+}
 </style>
 
 
@@ -69,7 +80,7 @@ echo '<div style="position:relative;background-image:url('.WEBSITE_LINK.'data'.D
 
 foreach($crops as $crop){
 
-	echo '<a class="showPhotosCropDiv imageNotSelected" data-crop-id="'.$crop->CROP_ID.'" data-crop-img href="#" alt="Voir les piczles" style="position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;"></a>';
+	echo '<a class="showPhotosCropDiv imageNotSelected" data-crop-id="'.$crop->CROP_ID.'" data-crop-img href="#save" alt="Voir les piczles" style="position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;"></a>';
 }
 
 echo '</div>';
@@ -85,7 +96,7 @@ foreach($photosCrop as $photoCrop){
 		}
 		$currentCropId = $photoCrop->ID_CROP;
 				
-		echo '<div data-crop-id="'.$currentCropId.'" class="photosCropDiv">
+		echo '<div data-crop-id="'.$currentCropId.'" class="photosCropDiv container">
 				<div data-crop-click data-crop-reset="true" data-crop-id="'.$currentCropId.'" class="imageNotSelected" style="width: '.$crops[0]->CROP_WIDTH.'px; height: '.$crops[0]->CROP_HEIGHT.'px;"></div>';
 	}
 
@@ -95,7 +106,7 @@ foreach($photosCrop as $photoCrop){
 echo '</div>';
 
 ?>
-<button class="btn btn-success">Sauvegarder</button>
+<button id="save" class="btn btn-success">Sauvegarder</button>
 <script type="text/javascript">
     $(function() {
         $("button").click(function() {
