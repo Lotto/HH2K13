@@ -9,14 +9,23 @@
 <h1>Uploader ma photo</h1>
 
 
-    <div id="dropfile">Drop an image from your computer</div>
+    <div id="dropfile">
+        <p>Déposer une image de votre ordinateur</p>
+        <p>ou</p>
+        <p>Cliquer pour ouvrir le navigateur de fichier</p>
+    </div>
     <style>
-        #dropfile{
-            width: 300px;
-            height: 50px;
+        #dropfile {
+            width: 100%;
             border: 3px dashed #BBBBBB;
-            line-height:50px;
+            font-size: 20px;
+            line-height:40px;
             text-align: center;
+            cursor: pointer;
+        }
+        #dropfile:hover {
+            color: red;
+            border-color: red;
         }
     </style>
     <script type="text/javascript">
@@ -72,7 +81,7 @@
         }
         function handleReaderLoad(evt) {
             var pic = {};
-            pic.file = evt.target.result.split(',')[1];
+            pic.master = evt.target.result.split(',')[1];
 
             var str = jQuery.param(pic);
 
@@ -80,18 +89,23 @@
                 type: 'POST',
                 url: "<?php echo WEBSITE_LINK; ?>/master",
                 data: str,
-                    success: function(data) {
-                    //do_something(data) ;
+                success: function(data) {
+                    document.location = data;
                 }
             });
         }
+            $("#dropfile").click(function() {
+                $("input[type=file]").click();
+            });
+            $("input[type=file]").change(function() {
+                $("form").submit();
+            })
         })
     </script>
 
 
 <form action="" method="post" enctype="multipart/form-data">
-	<label for="master">Image</label><input type="file" id="master" name="master">
-	<input type="submit" value="Envoyer ma photo">
+	<input style="display:none" type="file" id="master" name="master">
 </form>
 
 <?php require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php"); ?>
