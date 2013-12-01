@@ -17,8 +17,8 @@ require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 			<input type="text" id="subject" name="subject" class="form-control" placeholder="Titre de votre projet">
 		</p>
 		<p>
-			<button id="ajouter" class="btn btn-success">Ajoutez des crops' Piczle</button>
-			<input type="submit" onclick="genererFormulaire();" value="Créer mon projet !" class="btn btn-success" id="boutonFormulaire" disabled/>
+			<button id="ajouter" class="btn btn-warning">Ajoutez des crops' Piczle</button>
+			<input type="submit" onclick="genererFormulaire();" value="Créer mon projet !" class="btn btn-warning" id="boutonFormulaire" disabled/>
 		</p>
 	</form>
 
