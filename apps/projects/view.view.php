@@ -86,15 +86,30 @@ foreach($photosCrop as $photoCrop){
 		$currentCropId = $photoCrop->ID_CROP;
 				
 		echo '<div data-crop-id="'.$currentCropId.'" class="photosCropDiv">
-				<div data-crop-click data-crop-reset="true" data-crop-id="'.$currentCropId.'" class="imageNotSelected" style="width: '.$crops[0]->CROP_WIDTH.'px; height: '.$crops[0]->CROP_HEIGHT.'px;"></div>
-		';
+				<div data-crop-click data-crop-reset="true" data-crop-id="'.$currentCropId.'" class="imageNotSelected" style="width: '.$crops[0]->CROP_WIDTH.'px; height: '.$crops[0]->CROP_HEIGHT.'px;"></div>';
 	}
 
 
-	echo '<div data-crop-click data-crop-id="'.$currentCropId.'"><img src="'.WEBSITE_LINK.'data'.DS.'piczle'.DS.$photoCrop->ID.'.jpg" alt="photo"/></div>';
+	echo '<div data-crop-click data-crop-id="'.$currentCropId.'"><img data-img-id="'.$photoCrop->ID.'" src="'.WEBSITE_LINK.'data'.DS.'piczle'.DS.$photoCrop->ID.'.jpg" alt="photo"/></div>';
 }
 echo '</div>';
 
+?>
+<button>Sauvegarder</button>
+<script type="text/javascript">
+    $(function() {
+        $("button").click(function() {
+            var data = {};
+            $.each($("[data-crop-img].imageSelected"), function(k, v) {
+                data[$(v).attr("data-crop-id")] = $(v).find("img").attr("data-img-id");
+            });
+            $.get("/project/validate/<?php echo $this->params[0]; ?>", data, function() {
+                document.location = data;
+            });
+        })
+    })
+</script>
 
+<?php
 require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php");
 ?>
