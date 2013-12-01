@@ -21,11 +21,19 @@ if(isset($projects) && !empty($projects)){
 			echo '<div style="display: block; position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></div>';
 		}
 
+		if ($project->NB_CONTRIB == 0) {
+
+			$project->NB_CONTRIB = '0';
+			$disabled = 'disabled';
+		}
+		else
+			$disabled = '';
+
 		echo '</div>
 		<div class="container">
 			  <div class="row">
 			    <div class="col-lg-6"><a class="btn btn-success pull-right" href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$project->PROJECT_ID.'" role="button">Contribuer ('.$project->NB_CONTRIB.')</a></div>
-			    <div class="col-lg-6"><a class="btn btn-success pull-left" href="'.WEBSITE_LINK.'projects'.DS.'view'.DS.$project->PROJECT_ID.'" role="button">Finaliser</a></div>
+			    <div class="col-lg-6"><a class="btn btn-success pull-left" href="'.WEBSITE_LINK.'projects'.DS.'view'.DS.$project->PROJECT_ID.'" role="button" '.$disabled.'>Finaliser</a></div>
 			  </div>
 			</div>';
 	}
