@@ -19,7 +19,7 @@ foreach($finalPhotos as $finalPhoto) {
         $("[data-img-src][data-img-dest]")
             .css("cursor", "pointer")
             .click(function() {
-                if(!go) {return false;}
+                if(!go) {return;}
                 var from = $(this);
                 var title = $(this).attr("data-project-title");
                 $(this).find("img").clone()
@@ -48,7 +48,7 @@ foreach($finalPhotos as $finalPhoto) {
                 var button = $("<a>")
                     .css("position", "absolute")
                     .css("bottom", "3px")
-                    .css("right", "3px")
+                    .css("right", "12px")
                     .css("margin-bottom", "0")
                     .css("color", "white")
                     .addClass("btn")
