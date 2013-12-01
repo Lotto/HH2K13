@@ -68,6 +68,9 @@ class cropController{
                             echo WEBSITE_LINK;
                             exit;
                         } else {
+
+                        	$message = "Votre Piczle a bien été envoyé ! Félicitations !";
+                        	setFlash($message);
 						    header('Location: '.WEBSITE_LINK);
                         }
 					}
