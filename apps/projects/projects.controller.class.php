@@ -162,7 +162,7 @@ class projectsController{
 					}
 				}
 
-				header('Location: '.WEBSITE_LINK.'home');      
+				header('Location: '.WEBSITE_LINK.'projects#project'.$idProject);      
 				exit();
 			}
 			else {
@@ -223,7 +223,7 @@ class projectsController{
 
 				$image->save(WEBSITE_PATH.DS.'data'.DS.'valid'.DS.$idValidProject.'.jpg');
 
-				header('Location: '.WEBSITE_LINK.'home');
+				header('Location: '.WEBSITE_LINK.'home#project'.$idValidProject);
 				exit();
 			}
 			else {

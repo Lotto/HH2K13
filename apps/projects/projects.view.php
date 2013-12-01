@@ -11,7 +11,7 @@ if(isset($projects) && !empty($projects)){
 
 	foreach($projects as $project){
 
-		echo '<h2>'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.'</h2>';
+		echo '<h2 id="project'.$project->PROJECT_ID.'">'.$project->PROJECT_SUBJECT.' - '.$project->PROJECT_LOGIN.'</h2>';
 
 		echo '<div style="
 					position : relative;

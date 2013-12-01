@@ -5,11 +5,13 @@
 <div class="row">
 <?php
 foreach($finalPhotos as $finalPhoto) {
+    echo '<div class="container" id="' . $finalPhoto->VALID_ID . '">';
     echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" alt="Photo">';
     echo '</div>';
     echo '<div class="col-lg-6" data-download="true" data-img-src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" alt="Photo">';
+    echo '</div>';
     echo '</div>';
 }
 ?>
