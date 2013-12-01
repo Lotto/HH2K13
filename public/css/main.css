@@ -1,7 +1,7 @@
 .jumbotron img {
     width: 200px;
 }
-.jumbotron .btn {
+.jumbotron .btn, form .btn {
     width: 49%;
 }
 

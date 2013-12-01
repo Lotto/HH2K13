@@ -4,6 +4,8 @@ $(document).ready(function()
 
     $('#ajouter').on('click', function() {
 
+    	$('#genererFormulaire').removeAttr('disabled');
+
 		var dynamic_div = $(document.createElement('div')).css({ border: '1px dashed', position: 'absolute', left: 10, top: 10, width: '120', height: '120', padding: '3', margin: '0' });
 		$(dynamic_div).attr('id', 'sousPhoto'+id);
 		$(dynamic_div).attr('class', 'sousPhoto');
@@ -27,6 +29,7 @@ $(document).ready(function()
     	// 	containment: "parent" 
     	// });
         id = id + 1;
+        return false;
     });
 });
 
