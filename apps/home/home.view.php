@@ -39,6 +39,24 @@ foreach($finalPhotos as $finalPhoto) {
                         width: "90%",
                         title: title
                     });
+            var href = $(this).attr("data-img-dest");
+            var button = $("<a>")
+                .css("position", "absolute")
+                .css("bottom", "3px")
+                .css("right", "3px")
+                .css("margin-bottom", "0")
+                .css("color", "white")
+                .addClass("btn")
+                .append($("<li>")
+                    .addClass("glyphicon")
+                    .addClass("glyphicon-export"))
+                .attr("download", "")
+                .attr("href", href)
+                .click(function() {
+                    go = false;
+                    setTimeout("go=true;", 1*1000);
+                });
+            $(this).append(button);
         })
     })
 </script>
