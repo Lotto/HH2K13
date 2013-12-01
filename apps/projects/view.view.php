@@ -95,7 +95,7 @@ foreach($photosCrop as $photoCrop){
 echo '</div>';
 
 ?>
-<button>Sauvegarder</button>
+<button class="btn btn-success">Sauvegarder</button>
 <script type="text/javascript">
     $(function() {
         $("button").click(function() {
