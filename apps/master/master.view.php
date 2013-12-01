@@ -13,7 +13,7 @@
 <?php endif ?>
 
     <div id="dropfile">
-        <h2>Déplaces ton image dans le cadre ou sélectionnes la en cliquant</h2>
+        <h2>Déplace ton image dans le cadre ou sélectionne-la en cliquant</h2>
     </div>
     <style>
         #dropfile {
