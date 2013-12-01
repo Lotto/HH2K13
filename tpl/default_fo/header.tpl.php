@@ -75,3 +75,5 @@
             </p>
             <?php getFlash(); ?>
         </div>
+
+        <center>
