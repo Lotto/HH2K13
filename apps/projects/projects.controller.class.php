@@ -162,7 +162,7 @@ class projectsController{
 					}
 				}
 
-				header('Location: '.WEBSITE_LINK.'projects#project'.$idProject);      
+				header('Location: '.WEBSITE_LINK.'projects');      
 				exit();
 			}
 			else {
