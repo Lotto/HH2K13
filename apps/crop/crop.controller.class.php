@@ -57,11 +57,11 @@ class cropController{
 					$selectCrop = SPDO::getInstance()->prepare("SELECT * FROM PROJECTS_CROP WHERE ID = ?");
 					$selectCrop->setFetchMode(PDO::FETCH_OBJ);
 					$selectCrop->execute(array($_POST['crop']));
-					$crops = $selectCrop->fetchAll();
+					$cropsUpload = $selectCrop->fetchAll();
 
-					if (!empty($crops)) {
+					if (!empty($cropsUpload)) {
 						
-						$crop = $crops[0];
+						$crop = $cropsUpload[0];
 
 						$imagine = new Imagine\Gd\Imagine();
 						
