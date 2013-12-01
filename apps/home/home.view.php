@@ -6,7 +6,7 @@ foreach($finalPhotos as $finalPhoto) {
     echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" alt="Photo">';
     echo '</div>';
-    echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->VALID_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->MASTER_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
+    echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'master'.DS.'valid'.DS.$finalPhoto->MASTER_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" alt="Photo">';
     echo '</div>';
 }
@@ -28,6 +28,8 @@ foreach($finalPhotos as $finalPhoto) {
                     .click(function() {
                         var src = from.attr("data-img-src");
                         var dest = from.attr("data-img-dest");
+                        alert(src);
+                        alert(dest);
                         if ($(this).attr("src") == src) {
                             $(this).attr("src", dest);
                         } else {
