@@ -61,8 +61,6 @@ class cropController{
 						try {
 
 							$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'.jpg');
-							$message = "Votre Piczle a bien été envoyé ! Félicitations !";
-							setFlash($message);
 
 						} catch (Exception $e) {
 							$erreur = "Impossible d'enregistrer votre Piczle :( Veuillez réessayer plus tard.";
