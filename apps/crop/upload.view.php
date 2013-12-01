@@ -36,6 +36,7 @@
 		<?php foreach ($crops as $key => $crop): ?>
 			
 			<div 
+			data-count="<?php echo $crop->NB_POC; ?>"
 			data-width="<?php echo $crop->WIDTH; ?>"
 			data-height="<?php echo $crop->HEIGHT; ?>"
 			class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
