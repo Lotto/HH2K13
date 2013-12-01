@@ -112,8 +112,8 @@
 if(isset($projects) && !empty($projects)){
 
     foreach($projects as $project) {
-        echo '<a href="'. WEBSITE_LINK . 'projects/create/' . $project->PROJECT_ID . '">';
-        echo '<img src="'. WEBSITE_LINK . 'data/master/'. $project->PROJECT_ID . '.jpg"/>';
+        echo '<a href="'. WEBSITE_LINK . 'projects/create/' . $project->ID . '">';
+        echo '<img src="'. WEBSITE_LINK . 'data/master/'. $project->ID . '.jpg"/>';
         echo '</a>';
     }
 }

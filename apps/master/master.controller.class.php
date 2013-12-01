@@ -7,10 +7,9 @@ class masterController{
 		$tailleImage = 1000;
 
 		$r = SPDO::getInstance()->prepare("
-			SELECT
-				P.ID AS PROJECT_ID
-			FROM PROJECTS P
-			ORDER BY P.ID ASC");
+			SELECT P.ID AS ID
+			FROM PHOTOS_MASTER P
+			ORDER BY P.ID DESC");
 
 		$r->setFetchMode(PDO::FETCH_OBJ);
 		$r->execute();
