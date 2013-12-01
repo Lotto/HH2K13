@@ -6,9 +6,6 @@
 	</div>
 <?php endif ?>
 
-<h1>Choisis ta photo</h1>
-
-
     <div id="dropfile">
         <p>Déposer une image de votre ordinateur</p>
         <p>ou</p>
