@@ -6,6 +6,20 @@ class masterController{
 		$tailleMiniature = 255;
 		$tailleImage = 1000;
 
+		$r = SPDO::getInstance()->prepare("
+			SELECT
+				P.ID AS PROJECT_ID
+			FROM PROJECTS P
+			ORDER BY P.ID ASC");
+
+		$r->setFetchMode(PDO::FETCH_OBJ);
+		$r->execute();
+		$projects = $r->fetchAll();
+
+
+
+
+
         if (!empty($_POST['master'])) { // AJAX DRAG & DROP
             $file = $_POST['master'];
             $path = "/tmp/".md5(rand().time()).'.jpg';

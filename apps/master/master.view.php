@@ -98,4 +98,27 @@
 	<input style="display:none" type="file" id="master" name="master">
 </form>
 
+
+
+<style>
+    div.img-list a img {
+        margin-top: 30px;
+        width: 100%;
+    }
+</style>
+<div class="img-list">
+<?php
+
+if(isset($projects) && !empty($projects)){
+
+    foreach($projects as $project) {
+        echo '<a href="'. WEBSITE_LINK . 'projects/create/' . $project->PROJECT_ID . '">';
+        echo '<img src="'. WEBSITE_LINK . 'data/master/'. $project->PROJECT_ID . '.jpg"/>';
+        echo '</a>';
+    }
+}
+
+?>
+</div>
+
 <?php require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php"); ?>
