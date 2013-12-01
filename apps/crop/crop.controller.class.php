@@ -61,18 +61,20 @@ class cropController{
 						try {
 
 							$image->save(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$id.'.jpg');
+							$message = "Votre Piczle a bien été envoyé ! Félicitations !";
+							setFlash($message);
+
 						} catch (Exception $e) {
 							$erreur = "Impossible d'enregistrer votre Piczle :( Veuillez réessayer plus tard.";
 						}
-                        if (!empty($_POST['piczle'])) {
-                            echo WEBSITE_LINK;
-                            exit;
-                        } else {
+						if (!empty($_POST['piczle'])) {
 
-                        	$message = "Votre Piczle a bien été envoyé ! Félicitations !";
-                        	setFlash($message);
-						    header('Location: '.WEBSITE_LINK);
-                        }
+							echo WEBSITE_LINK;
+							exit;
+						} else {
+
+							header('Location: '.WEBSITE_LINK);
+						}
 					}
 
 				}
