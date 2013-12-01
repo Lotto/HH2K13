@@ -17,6 +17,20 @@ class cropController{
 
 			$message = "Propose nous ton Piczle de ".$crop->WIDTH."px de long par ".$crop->HEIGHT."px de hauteur !";
 
+            if (!empty($_POST['piczle'])) { // AJAX DRAG & DROP
+                $file = $_POST['piczle'];
+                $path = "/tmp/".md5(rand().time()).'.jpg';
+
+                // Encode it correctly
+                $encodedData = str_replace(' ','+',$file);
+                $decodedData = base64_decode($encodedData);
+
+                // Finally, save the image
+                file_put_contents($path, $decodedData) ;
+
+                $_FILES['piczle']["tmp_name"] = $path;
+            }
+
 			if(!empty($_FILES['piczle']))
 			{
 				require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');

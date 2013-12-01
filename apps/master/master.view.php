@@ -87,7 +87,7 @@
 
             $.ajax({
                 type: 'POST',
-                url: "<?php echo WEBSITE_LINK; ?>/master",
+                url: document.location,
                 data: str,
                 success: function(data) {
                     document.location = data;
