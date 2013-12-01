@@ -21,7 +21,6 @@ $(document).ready(function(){
 		    $("[data-crop-img][data-crop-id="+$(this).attr("data-crop-id")+"]").removeClass('imageNotSelected');
 		    $("[data-crop-img][data-crop-id="+$(this).attr("data-crop-id")+"]").addClass('imageSelected');
     	}
-    	$(".photosCropDiv").hide();
     }); 
 });
 
