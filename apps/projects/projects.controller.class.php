@@ -152,7 +152,7 @@ class projectsController{
 
 	function validate() {
 
-		$idProject = $params[0];
+		$idProject = $this->params[0];
 
 		require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');
 		require_once(WEBSITE_PATH.DS.'inc'.DS.'class'.DS.'SPDO.class.php');
@@ -207,7 +207,7 @@ class projectsController{
 			}
 		}
 
-		require_once("create.view.php");
+		require_once("validate.view.php");
 	}
 }
 ?>
