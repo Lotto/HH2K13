@@ -18,7 +18,7 @@ require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 		</p>
 		<p>
 			<button id="ajouter" class="btn btn-warning">Ajoutez des crops' Piczle</button>
-			<input type="submit" onclick="genererFormulaire();" value="Créer mon projet !" class="btn btn-warning" id="boutonFormulaire" disabled/>
+			<input type="submit" onclick="return genererFormulaire();" value="Créer mon projet !" class="btn btn-warning" id="boutonFormulaire" disabled/>
 		</p>
 	</form>
 

@@ -1,3 +1,4 @@
+@import "hint.css";
 .clear
 {
     clear: both;
@@ -16,7 +17,9 @@
   background-color:#F0AD4E;
   text-align:center;
   width:49%;
-  height:80px;
+  padding: 10px;
+
+  margin-bottom: 100px;
 
   /* ... */
   /* propriété CSS3 (fonctionne sous Opera) */
@@ -56,8 +59,8 @@
 }
 
 #text{
-  line-height: 80px;
-  font-size:20px;
+    line-height: 15px;
+  font-size:18px;
   color: white;
 
   position:relative;
@@ -77,8 +80,9 @@
     margin-bottom: 15px;
 }
 
-.jumbotron .btn, form .btn {
-    width: 50%;
+.jumbotron .btn, form .btn, .container .btn {
+    font-size: 20px;
+    width: 49%;
     min-height: 40px;
 }
 
@@ -112,4 +116,9 @@
 {
     position: relative;
     margin: auto;
+}
+
+.container
+{
+    border-bottom: 2px solid #F0AD4E;
 }

@@ -54,11 +54,13 @@ function genererFormulaire(){
             var height = $('#sousPhoto'+id).height();
             $('#form').append($('<input type="hidden" name="photos' + id + '[width]" value="' + width + '">'));
             $('#form').append($('<input type="hidden" name="photos' + id + '[height]" value="' + height + '">'));
+            return true;
         });
     }
     else {
 
-        alert('KO');
+        alert('Attention, il ne faut pas que tes crops se superposent... :(');
+        return false;
     }
 }
 

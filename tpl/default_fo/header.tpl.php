@@ -61,8 +61,8 @@
 			<p class="lead"></p>
 			<?php if (HOME): ?>
 				<p>
-					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>master" role="button">Créer un projet</a>
-					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>projects" role="button">Participer à un projet</a>
+					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>master" role="button">Proposer une image à la communauté</a>
+					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>projects" role="button">Jouer avec des images déjà envoyées</a>
 				</p>
 			<?php else: ?>
 				<div id="bubble">

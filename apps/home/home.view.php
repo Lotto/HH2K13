@@ -1,5 +1,7 @@
 <?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
 
+<h2>Les créations de la communauté</h2>
+
 <div class="row">
 <?php
 foreach($finalPhotos as $finalPhoto) {
