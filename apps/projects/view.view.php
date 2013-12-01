@@ -103,6 +103,7 @@ echo '</div>';
             $.each($("[data-crop-img].imageSelected"), function(k, v) {
                 form.append($("<input>").attr("name", $(v).attr("data-crop-id")).val($(v).find("img").attr("data-img-id")));
             });
+            $("body").append(form);
             form.submit();
         })
     })
