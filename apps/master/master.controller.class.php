@@ -50,8 +50,12 @@ class masterController{
 				$image->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'.jpg');
 				$image->thumbnail($sizeMiniature, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
 
+				$message = "Votre image a bien été envoyé ! Félicitations !";
+				setFlash($message);
+
                 $link = WEBSITE_LINK.'projects/create/'.$id;
                 header('Location: '.$link);
+                exit;
 			}
 		}
 

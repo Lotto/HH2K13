@@ -80,6 +80,7 @@ class cropController{
 		                        $message = "Votre Piczle a bien été envoyé ! Félicitations !";
 		                        setFlash($message);
 		                        header('Location: '.WEBSITE_LINK);
+		                        exit;
 
 							} catch (Exception $e) {
 								$erreur = "Impossible d'enregistrer votre Piczle :( Veuillez réessayer plus tard.";
