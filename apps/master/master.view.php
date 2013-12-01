@@ -6,7 +6,7 @@
 	</div>
 <?php endif ?>
 
-<h1>Uploader ma photo</h1>
+<h1>Choisis ta photo</h1>
 
 
     <div id="dropfile">
