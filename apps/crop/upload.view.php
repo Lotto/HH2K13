@@ -33,25 +33,28 @@
 		width: <?php echo $master->WIDTH; ?>px; 
 		height: <?php echo $master->HEIGHT; ?>px;
 		">
-		<?php foreach ($crops as $key => $crop): ?>
-			
-			<div 
-			data-count="<?php echo $crop->NB_POC; ?>"
-			data-width="<?php echo $crop->WIDTH; ?>"
-			data-height="<?php echo $crop->HEIGHT; ?>"
-			class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
-				display: block;
-				position: absolute;
-				left:<?php echo $crop->LEFT; ?>px;
-				top: <?php echo $crop->TOP; ?>px;
-				width: <?php echo $crop->WIDTH; ?>px;
-				height: <?php echo $crop->HEIGHT; ?>px;
-				background-color: black;
-				opacity:0.5;
-				border: 1px solid #F0AD4E;
-				">
-			</div>
-		<?php endforeach ?>
+		<?php if (!empty($crops)): ?>
+			<?php foreach ($crops as $key => $crop): ?>
+				
+				<div 
+				data-count="<?php echo $crop->NB_POC; ?>"
+				data-width="<?php echo $crop->WIDTH; ?>"
+				data-height="<?php echo $crop->HEIGHT; ?>"
+				class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
+					display: block;
+					position: absolute;
+					left:<?php echo $crop->LEFT; ?>px;
+					top: <?php echo $crop->TOP; ?>px;
+					width: <?php echo $crop->WIDTH; ?>px;
+					height: <?php echo $crop->HEIGHT; ?>px;
+					background-color: black;
+					opacity:0.5;
+					border: 1px solid #F0AD4E;
+					">
+				</div>
+				
+			<?php endforeach ?>
+		<?php endif ?>
 	</div>
 	<style>
 		.dropfile {
