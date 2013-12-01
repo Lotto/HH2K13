@@ -36,3 +36,9 @@
     background-color: rgba(234, 136, 37, 0.5);
     float: left;
 }
+
+.bigPhoto
+{
+    position: relative;
+    margin: auto;
+}
