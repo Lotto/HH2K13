@@ -7,9 +7,15 @@ class cropController{
 
 		$idProject = $this->params[0];
 
-		$r = SPDO::getInstance()->prepare("SELECT * FROM PROJECTS_CROP WHERE ID_PROJECT = ?");
+		$r = SPDO::getInstance()->prepare("
+			SELECT PC.ID AS ID, PC.ID_PROJECT AS ID_PROJECT, PC.WIDTH AS WIDTH, PC.HEIGHT AS HEIGHT, PC.LEFT AS `LEFT`, PC.TOP AS TOP, COUNT(POC.ID) AS NB_POC
+			FROM PROJECTS_CROP PC
+			LEFT JOIN PHOTOS_CROP POC ON POC.ID_CROP=PC.ID
+			WHERE PC.ID_PROJECT = :ID_PROJECT
+			GROUP BY PC.ID");
 		$r->setFetchMode(PDO::FETCH_OBJ);
-		$r->execute(array($idProject));
+		$r->bindValue(':ID_PROJECT', $idProject, PDO::PARAM_INT);
+		$r->execute();
 		$crops = $r->fetchAll();
 
 		if (!empty($crops)) {
