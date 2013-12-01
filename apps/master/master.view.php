@@ -6,7 +6,7 @@
 	</div>
 <?php endif ?>
 
-<h1>Uploader ma photo</h1>
+<h1>Choisis ta photo</h1>
 
 
     <div id="dropfile">
@@ -24,8 +24,8 @@
             cursor: pointer;
         }
         #dropfile:hover {
-            color: red;
-            border-color: red;
+            color: #4CAE4C;
+            border-color: #4CAE4C;
         }
     </style>
     <script type="text/javascript">

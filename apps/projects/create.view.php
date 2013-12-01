@@ -2,6 +2,8 @@
 require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 ?>
 
+<h1>Découpes la</h1>
+
 <?php if (isset($erreur)): ?>
 	<div class="alert alert-danger">
 		<?php echo $erreur ?>
