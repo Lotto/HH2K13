@@ -18,7 +18,11 @@
 		</div>
 	<?php endif ?>
 
-	<h1>Uploader mon Piczle</h1>
+
+	<?php if (isset($titre) AND !empty($titre)): ?>
+		<h1><?php echo $titre ?></h1>
+	<?php endif ?>
+
 
 <?php require_once(WEBSITE_PATH."tpl/default_fo/share.php"); ?>
 	

@@ -96,6 +96,7 @@ class cropController{
 		else
 			$erreurFatale = 'Aïe :( Cet identifiant n\'est associé à aucun projet. <a href="'.WEBSITE_LINK.'projects">Retournez à la page des projets ?</a>';
 
+		$titre = "Uploader mon Piczle";
 		require_once("upload.view.php");
 	}
 }

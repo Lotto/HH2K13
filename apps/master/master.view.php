@@ -1,5 +1,11 @@
 <?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
 
+
+<?php if (isset($titre) AND !empty($titre)): ?>
+    <h1><?php echo $titre ?></h1>
+<?php endif ?>
+
+
 <?php if (isset($message)): ?>
 	<div class="alert alert-danger">
 		<?php echo $message ?>

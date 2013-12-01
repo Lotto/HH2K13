@@ -1,8 +1,12 @@
 <?php
 require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
+?>
 
-echo "<h1>Projets</h1>";
+<?php if (isset($titre) AND !empty($titre)): ?>
+	<h1><?php echo $titre ?></h1>
+<?php endif ?>
 
+<?php
 if(isset($projects) && !empty($projects)){
 
 	foreach($projects as $project){
