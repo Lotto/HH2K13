@@ -42,7 +42,7 @@ foreach($finalPhotos as $finalPhoto) {
                         title: title
                     });
                     $("[data-download]").each(function(k, v) {
-                        var href = $(this).attr("data-img-src");
+                        var href = $(v).attr("data-img-src");
                         var button = $("<a>")
                             .css("position", "absolute")
                             .css("bottom", "3px")
@@ -59,7 +59,7 @@ foreach($finalPhotos as $finalPhoto) {
                                 go = false;
                                 setTimeout("go=true;", 1*1000);
                             });
-                        $(this).append(button);
+                        $(v).append(button);
                     })
         })
     })
