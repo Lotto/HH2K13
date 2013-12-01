@@ -59,6 +59,7 @@ class masterController{
 			}
 		}
 
+		$titre = 'Choisis ta photo';
 		require_once("master.view.php");
 	}
 }

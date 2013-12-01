@@ -55,17 +55,36 @@
 					</a>
 				<?php endif; ?>
 			</div>
-			<a class="logo" href="<?php echo WEBSITE_LINK ?>">
+			<a id="logo" href="<?php echo WEBSITE_LINK ?>">
 				<img src="<?php echo WEBSITE_LINK ?>public/img/Piczle_Me_v02.png" alt="Piczle Me"/>
 			</a>
 			<p class="lead"></p>
 			<?php if (HOME): ?>
 				<p>
-					<a class="btn btn-success" href="<?php echo WEBSITE_LINK ?>master" role="button">Créer un projet</a>
-					<a class="btn btn-success" href="<?php echo WEBSITE_LINK ?>projects" role="button">Participer à un projet</a>
+					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>master" role="button">Créer un projet</a>
+					<a class="btn btn-warning" href="<?php echo WEBSITE_LINK ?>projects" role="button">Participer à un projet</a>
 				</p>
+			<?php else: ?>
+				<div id="bubble">
+					<span id="text">
+						<?php if (isset($titre) AND !empty($titre)): ?>
+							<?php echo $titre; ?>
+						<?php elseif (flashExist()): ?>				
+							<?php getFlash(); ?>
+						<?php elseif (isset($message) AND !empty($message)): ?>
+							<?php echo $message; ?>
+						<?php elseif (isset($_SESSION["login"])): ?>
+							Bonjour <?php echo $_SESSION["login"]; ?> !
+						<?php else: ?>
+							Bonjour visiteur !
+						<?php endif ?>
+						<?php echo (isset($titre) AND !empty($titre)) ? $titre : getFlash(); ?>
+					</span>
+					<span id="arrow_border"></span>
+					<span id="arrow_inner"></span>
+				</div>	
 			<?php endif ?>
-			
+			<div class="clear"></div>
 		</div>
 			<?php getFlash(); ?>
 

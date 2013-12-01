@@ -35,4 +35,9 @@ function getFlash()
 		echo $html;
 	}
 }
+
+function flashExist()
+{
+	return (isset($_SESSION['flash']) AND !empty($_SESSION['flash']));
+}
 ?>
