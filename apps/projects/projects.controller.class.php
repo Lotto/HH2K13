@@ -102,7 +102,7 @@ class projectsController{
 		$photoMaster = $photosMaster[0];
 
 		if (!empty($_POST)) {
-			debug($_POST);
+
 			if (!empty($_POST['subject']) AND count($_POST) > 1) {
 
 				$imagine = new Imagine\Gd\Imagine();
@@ -146,6 +146,65 @@ class projectsController{
 			else {
 
 				$erreur = "N'oublie pas de renseigner un titre et au moins un crop' Piczle.";
+			}
+		}
+	}
+
+	function validate() {
+
+		$idProject = $params[0];
+
+		require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');
+		require_once(WEBSITE_PATH.DS.'inc'.DS.'class'.DS.'SPDO.class.php');
+
+		$r = SPDO::getInstance()->prepare("SELECT * FROM  PROJECTS WHERE ID = ?");
+		$r->setFetchMode(PDO::FETCH_OBJ);
+		$r->execute(array($idProject));
+		$projects = $r->fetchAll();
+
+		if (empty($projects))
+			$erreurFatale = 'Aïe :( Cet identifiant n\'est associé à aucun projet. <a href="'.WEBSITE_LINK.'projects">Retournez à la page des projets ?</a>';
+		else {
+
+			$project = $projects[0];
+			$idMaster = $project->ID_MASTER;
+
+			if (!empty($_POST)) {
+
+					$imagine = new Imagine\Gd\Imagine();
+
+					$insert = SPDO::getInstance()->prepare("INSERT INTO VALID_PROJECTS(ID_PROJECT) VALUES(:idProject)");
+					$insert->execute(array(
+							'idProject' => $idProject
+						));
+					$idValidProject = SPDO::getInstance()->lastInsertId();
+
+					$image = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$idMaster.'.jpg');
+
+					foreach ($_POST as $idCrop => $idPiczle) {
+									
+						$selectCrop = SPDO::getInstance()->prepare("SELECT * FROM  PROJECTS_CROP WHERE ID = :idCrop");
+						$selectCrop->setFetchMode(PDO::FETCH_OBJ);
+						$selectCrop->execute(array(
+							'idCrop' => $idCrop
+							));
+						$crops = $selectCrop->fetchAll();
+						$crop = $crops[0];
+
+						$imagePiczle = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$idPiczle.'.jpg');
+						$position = new Imagine\Image\Point($crop->LEFT, $crop->TOP);
+						$image->paste($imagePiczle, $position);
+					}
+
+					$image->save(WEBSITE_PATH.DS.'data'.DS.'valid'.DS.$idValidProject.'.jpg');
+
+					header('Location: '.WEBSITE_LINK.'home');      
+					exit();
+				}
+				else {
+
+					$erreur = "N'oublie pas de renseigner un titre et au moins un crop' Piczle.";
+				}
 			}
 		}
 
