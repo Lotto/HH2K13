@@ -6,7 +6,7 @@ foreach($finalPhotos as $finalPhoto) {
     echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" alt="Photo">';
     echo '</div>';
-    echo '<div class="col-lg-6" data-img-src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
+    echo '<div class="col-lg-6" data-download="true" data-img-src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" data-img-dest="'.WEBSITE_LINK.'data'.DS.'master'.DS.$finalPhoto->MASTER_ID.'.jpg" data-project-title="'.$finalPhoto->SUBJECT.'">';
     echo '<img src="'.WEBSITE_LINK.'data'.DS.'valid'.DS.$finalPhoto->VALID_ID.'.jpg" alt="Photo">';
     echo '</div>';
 }
@@ -14,10 +14,12 @@ foreach($finalPhotos as $finalPhoto) {
 </div>
 
 <script type="text/javascript">
+    var go;
     $(function(){
         $("[data-img-src][data-img-dest]")
             .css("cursor", "pointer")
             .click(function() {
+                if(!go) {return false;}
                 var from = $(this);
                 var title = $(this).attr("data-project-title");
                 $(this).find("img").clone()
@@ -39,24 +41,26 @@ foreach($finalPhotos as $finalPhoto) {
                         width: "90%",
                         title: title
                     });
-            var href = $(this).attr("data-img-dest");
-            var button = $("<a>")
-                .css("position", "absolute")
-                .css("bottom", "3px")
-                .css("right", "3px")
-                .css("margin-bottom", "0")
-                .css("color", "white")
-                .addClass("btn")
-                .append($("<li>")
-                    .addClass("glyphicon")
-                    .addClass("glyphicon-export"))
-                .attr("download", "")
-                .attr("href", href)
-                .click(function() {
-                    go = false;
-                    setTimeout("go=true;", 1*1000);
-                });
-            $(this).append(button);
+                    $("[data-download]").each(function(k, v) {
+                        var href = $(this).attr("data-img-src");
+                        var button = $("<a>")
+                            .css("position", "absolute")
+                            .css("bottom", "3px")
+                            .css("right", "3px")
+                            .css("margin-bottom", "0")
+                            .css("color", "white")
+                            .addClass("btn")
+                            .append($("<li>")
+                                .addClass("glyphicon")
+                                .addClass("glyphicon-export"))
+                            .attr("download", "")
+                            .attr("href", href)
+                            .click(function() {
+                                go = false;
+                                setTimeout("go=true;", 1*1000);
+                            });
+                        $(this).append(button);
+                    })
         })
     })
 </script>
