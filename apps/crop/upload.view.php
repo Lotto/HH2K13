@@ -26,7 +26,8 @@
 
 <?php require_once(WEBSITE_PATH."tpl/default_fo/share.php"); ?>
 	
-	<div style="
+	<div 
+		style="
 		position: relative;
 		background-image:url(<?php echo WEBSITE_LINK.'data'.DS.'master'.DS.$master->ID.'.jpg'; ?>);
 		width: <?php echo $master->WIDTH; ?>px; 
@@ -34,7 +35,10 @@
 		">
 		<?php foreach ($crops as $key => $crop): ?>
 			
-			<div class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
+			<div 
+			data-width="<?php echo $crop->WIDTH; ?>"
+			data-height="<?php echo $crop->HEIGHT; ?>"
+			class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
 				display: block;
 				position: absolute;
 				left:<?php echo $crop->LEFT; ?>px;
@@ -119,8 +123,8 @@
     <script type="text/javascript">
         $(function() {
             $("[idCrop]").each(function(k,v) {
-                var width = Math.floor($(this).width());
-                var height = Math.floor($(this).height());
+                var width = Math.floor($(this).attr("data-width"));
+                var height = Math.floor($(this).attr("data-height"));
                 var taille = $("<span>").text(width+"x"+height+"px")
                     .css("position", "absolute")
                     .css("top", "3px")
