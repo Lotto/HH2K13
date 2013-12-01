@@ -128,11 +128,11 @@ class projectsController{
 				}
 
 				header('Location: '.WEBSITE_LINK.'home');      
-				exit();  
+				exit();
 			}
 			else {
 
-				echo "string";
+				$erreur = "N'oublie pas de renseigner un titre et au moins un crop' Piczle.";
 			}
 		}
 
