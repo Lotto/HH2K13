@@ -24,8 +24,8 @@ if(isset($projects) && !empty($projects)){
 		echo '</div>
 		<div class="container">
 			  <div class="row">
-			    <div class="col-lg-6"><a class="btn btn-success pull-right" href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$project->PROJECT_ID.'" role="button">Piczle Me</a></div>
-			    <div class="col-lg-6"><a class="btn btn-success pull-left" href="http://localhost/HH2K13/master" role="button">Générer un puzzle</a></div>
+			    <div class="col-lg-6"><a class="btn btn-success pull-right" href="'.WEBSITE_LINK.'crop'.DS.'upload'.DS.$project->PROJECT_ID.'" role="button">Contribuer</a></div>
+			    <div class="col-lg-6"><a class="btn btn-success pull-left" href="'.WEBSITE_LINK.'projects'.DS.'validate'.DS.$project->PROJECT_ID.'" role="button">Finaliser</a></div>
 			  </div>
 			</div>';
 	}
