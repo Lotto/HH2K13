@@ -55,7 +55,55 @@ class projectsController{
 		require_once("view.view.php");
 	}
 
+
 	function projects($myprojects = false){
+
+		$sqlWhere = ($myprojects==true) ? ' WHERE P.LOGIN = :LOGIN ' : '' ;
+
+		$r = SPDO::getInstance()->prepare(
+			"SELECT 
+				PM.ID AS MASTER_ID, 
+				PM.WIDTH AS MASTER_WIDTH, 
+				PM.HEIGHT AS MASTER_HEIGHT,
+				P.ID AS PROJECT_ID,
+				P.SUBJECT AS PROJECT_SUBJECT,
+				P.LOGIN AS PROJECT_LOGIN
+			FROM PROJECTS P
+			LEFT JOIN PHOTOS_MASTER PM ON PM.ID=P.ID_MASTER
+			".$sqlWhere."
+			ORDER BY P.ID ASC");
+
+		$r->setFetchMode(PDO::FETCH_OBJ);
+		if($myprojects==true){
+			$r->bindValue(':LOGIN', $_SESSION['login'], PDO::PARAM_STR);
+		}
+		$r->execute();
+		$projects = $r->fetchAll();
+		
+		$arrayCrops = array();
+
+		foreach ($projects as $project){
+			$r = SPDO::getInstance()->prepare(
+				"SELECT 
+					PC.ID AS CROP_ID,
+					PC.LEFT AS CROP_LEFT,
+					PC.TOP AS CROP_TOP,
+					PC.WIDTH AS CROP_WIDTH,
+					PC.HEIGHT AS CROP_HEIGHT
+				FROM PROJECTS_CROP PC
+				WHERE ID_PROJECT =:ID_PROJECT");
+
+			$r->setFetchMode(PDO::FETCH_OBJ);
+			$r->bindValue(':ID_PROJECT', $project->PROJECT_ID, PDO::PARAM_INT);
+			$r->execute();
+			$arrayCrops[$project->PROJECT_ID] = $r->fetchAll();
+
+		}
+
+		require_once("projects.view.php");
+	}
+
+	function projectsSave($myprojects = false){
 
 		$sqlWhere = ($myprojects==true) ? ' WHERE P.LOGIN = :LOGIN ' : '' ;
 
