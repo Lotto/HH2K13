@@ -97,8 +97,10 @@ foreach($photosCrop as $photoCrop){
 		}
 		$currentCropId = $photoCrop->ID_CROP;
 				
-		echo '<div data-crop-id="'.$currentCropId.'" class="photosCropDiv container">
-				<div data-crop-click data-crop-reset="true" data-crop-id="'.$currentCropId.'" class="imageNotSelected" style="width: '.$crops[0]->CROP_WIDTH.'px; height: '.$crops[0]->CROP_HEIGHT.'px;"></div>';
+		echo '<div data-crop-id="'.$currentCropId.'" class="photosCropDiv container">';
+        echo '<div data-crop-click data-crop-reset="true" data-crop-id="'.$currentCropId.'" style="width: '.$crops[0]->CROP_WIDTH.'px; height: '.$crops[0]->CROP_HEIGHT.'px;">
+            <img data-img-id="'.$photoCrop->ID.'" src="'.WEBSITE_LINK.'data'.DS.'crop'.DS.$photoCrop->ID_CROP.'.jpg" alt="photo"/>
+        </div>';
 	}
 
 
