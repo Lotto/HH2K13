@@ -99,7 +99,7 @@ echo '</div>';
 <script type="text/javascript">
     $(function() {
         $("button").click(function() {
-            var form = $("<form>").attr("method", "POST").attr("action", "/projects/validate/<?php echo $this->params[0]; ?>");
+            var form = $("<form>").attr("method", "POST").attr("action", "<?php echo WEBSITE_LINK ?>projects/validate/<?php echo $this->params[0]; ?>");
             $.each($("[data-crop-img].imageSelected"), function(k, v) {
                 form.append($("<input>").attr("name", $(v).attr("data-crop-id")).val($(v).find("img").attr("data-img-id")));
             });
