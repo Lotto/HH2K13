@@ -13,9 +13,7 @@
 <?php endif ?>
 
     <div id="dropfile">
-        <p>Déposer une image de votre ordinateur</p>
-        <p>ou</p>
-        <p>Cliquer pour ouvrir le navigateur de fichier</p>
+        <h2>Déplaces ton image dans le cadre ou sélectionnes la en cliquant</h2>
     </div>
     <style>
         #dropfile {

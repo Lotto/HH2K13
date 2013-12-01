@@ -78,7 +78,8 @@
 }
 
 .jumbotron .btn, form .btn {
-    width: 49%;
+    width: 50%;
+    min-height: 40px;
 }
 
 .jumbotron .login {
