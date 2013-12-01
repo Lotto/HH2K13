@@ -18,8 +18,7 @@ foreach($finalPhotos as $finalPhoto) {
         $("[data-img-src][data-img-dest]")
             .css("cursor", "pointer")
             .click(function() {
-                var src = $(this).attr("data-img-src");
-                var dest = $(this).attr("data-img-dest");
+                var from = $(this);
                 var title = $(this).attr("data-project-title");
                 $(this).find("img").clone()
                     .css("margin", "auto")
@@ -27,6 +26,8 @@ foreach($finalPhotos as $finalPhoto) {
                     .css("display", "block")
                     .css("cursor", "pointer")
                     .click(function() {
+                        var src = from.attr("data-img-src");
+                        var dest = from.attr("data-img-dest");
                         if ($(this).attr("src") == src) {
                             $(this).attr("src", dest);
                         } else {
