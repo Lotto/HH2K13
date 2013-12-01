@@ -41,27 +41,28 @@ foreach($finalPhotos as $finalPhoto) {
                         width: "90%",
                         title: title
                     });
-                    $("[data-download]").each(function(k, v) {
-                        var href = $(v).attr("data-img-src");
-                        var button = $("<a>")
-                            .css("position", "absolute")
-                            .css("bottom", "3px")
-                            .css("right", "3px")
-                            .css("margin-bottom", "0")
-                            .css("color", "white")
-                            .addClass("btn")
-                            .append($("<li>")
-                                .addClass("glyphicon")
-                                .addClass("glyphicon-export"))
-                            .attr("download", "")
-                            .attr("href", href)
-                            .click(function() {
-                                go = false;
-                                setTimeout("go=true;", 1*1000);
-                            });
-                        $(v).append(button);
-                    })
-        })
+                });
+
+            $("[data-download]").each(function(k, v) {
+                var href = $(v).attr("data-img-src");
+                var button = $("<a>")
+                    .css("position", "absolute")
+                    .css("bottom", "3px")
+                    .css("right", "3px")
+                    .css("margin-bottom", "0")
+                    .css("color", "white")
+                    .addClass("btn")
+                    .append($("<li>")
+                        .addClass("glyphicon")
+                        .addClass("glyphicon-export"))
+                    .attr("download", "")
+                    .attr("href", href)
+                    .click(function() {
+                        go = false;
+                        setTimeout("go=true;", 1*1000);
+                    });
+                $(v).append(button);
+            })
     })
 </script>
 
