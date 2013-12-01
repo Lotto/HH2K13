@@ -45,7 +45,13 @@ else{
 if(is_file('./apps/'.$appToCall.'/'.$appToCall.'.controller.class.php') ){
 
 	require_once(WEBSITE_PATH.'apps/'.$appToCall.'/'.$appToCall.'.controller.class.php');
-		
+
+	if ($appToCall == 'home' AND $do == 'home')
+		define('HOME', true);
+	else
+		define('HOME', false);
+
+
 	$dispatcherToCall = $appToCall.'Controller';
 	$d = new $dispatcherToCall();
 	$d->params = (isset($get) && !empty($get)) ? $get : array();
