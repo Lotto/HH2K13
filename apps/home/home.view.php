@@ -14,7 +14,7 @@ foreach($finalPhotos as $finalPhoto) {
 </div>
 
 <script type="text/javascript">
-    var go;
+    var go = true;
     $(function(){
         $("[data-img-src][data-img-dest]")
             .css("cursor", "pointer")
