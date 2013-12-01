@@ -1,10 +1,9 @@
 $(document).ready(function()
 {
     var id = 1;
-
     $('#ajouter').on('click', function() {
 
-    	$('#genererFormulaire').removeAttr('disabled');
+    	$('#boutonFormulaire').removeAttr('disabled');
 
 		var dynamic_div = $(document.createElement('div')).css({ border: '1px dashed', position: 'absolute', left: 10, top: 10, width: '120', height: '120', padding: '3', margin: '0' });
 		$(dynamic_div).attr('id', 'sousPhoto'+id);
