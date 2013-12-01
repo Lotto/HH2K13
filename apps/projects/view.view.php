@@ -103,7 +103,7 @@ echo '</div>';
             $.each($("[data-crop-img].imageSelected"), function(k, v) {
                 data[$(v).attr("data-crop-id")] = $(v).find("img").attr("data-img-id");
             });
-            $.get("/project/validate/<?php echo $this->params[0]; ?>", data, function() {
+            $.get("/projects/validate/<?php echo $this->params[0]; ?>", data, function() {
                 document.location = data;
             });
         })
