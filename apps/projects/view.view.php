@@ -99,13 +99,11 @@ echo '</div>';
 <script type="text/javascript">
     $(function() {
         $("button").click(function() {
-            var data = {};
+            var form = $("<form>").attr("method", "POST").attr("action", "/projects/validate/<?php echo $this->params[0]; ?>");
             $.each($("[data-crop-img].imageSelected"), function(k, v) {
-                data[$(v).attr("data-crop-id")] = $(v).find("img").attr("data-img-id");
+                form.append($("<input>").attr("name", $(v).attr("data-crop-id")).val($(v).find("img").attr("data-img-id")));
             });
-            $.post("/projects/validate/<?php echo $this->params[0]; ?>", data, function() {
-                document.location = data;
-            });
+            form.submit();
         })
     })
 </script>
