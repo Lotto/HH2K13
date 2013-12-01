@@ -18,7 +18,7 @@ function debug($var, $die = false)
 		die();
 }
 
-function setFlash($message, $type ="info")
+function setFlash($message, $type = "info")
 {
 	$_SESSION['flash']['message'] = $message;
 	$_SESSION['flash']['type'] = $type;
