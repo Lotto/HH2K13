@@ -13,4 +13,31 @@ foreach($finalPhotos as $finalPhoto) {
 ?>
 </div>
 
+<script type="text/javascript">
+    $(function(){
+        $("[data-img-src][data-img-dest]")
+            .css("cursor", "pointer")
+            .click(function() {
+                var src = $(this).attr("data-img-src");
+                var dest = $(this).attr("data-img-dest");
+                $(this).find("img").clone()
+                    .css("margin", "auto")
+                    .css("position", "relative")
+                    .css("display", "block")
+                    .css("cursor", "pointer")
+                    .click(function() {
+                        if ($(this).attr("src") == src) {
+                            $(this).attr("src", dest);
+                        } else {
+                            $(this).attr("src", src);
+                        }
+                    })
+                    .dialog({
+                    modal: true,
+                    width: "90%"
+                });
+        })
+    })
+</script>
+
 <?php require_once(WEBSITE_PATH."tpl/default_fo/footer.tpl.php");?>
