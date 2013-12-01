@@ -90,6 +90,9 @@ class projectsController{
 
 	function create(){
 
+		require_once('phar://'.WEBSITE_PATH.DS."lib".DS."imagine".DS.'imagine.phar');
+		require_once(WEBSITE_PATH.DS.'inc'.DS.'class'.DS.'SPDO.class.php');
+
 		$idMaster = $this->params[0];
 		$r = SPDO::getInstance()->prepare("SELECT * FROM  PHOTOS_MASTER WHERE ID = ?");
 		$r->setFetchMode(PDO::FETCH_OBJ);
@@ -99,8 +102,12 @@ class projectsController{
 		$photoMaster = $photosMaster[0];
 
 		if (!empty($_POST)) {
-			
+			debug($_POST);
 			if (!empty($_POST['subject']) AND count($_POST) > 1) {
+
+				$imagine = new Imagine\Gd\Imagine();
+				
+				
 
 				$insert = SPDO::getInstance()->prepare("INSERT INTO PROJECTS(ID_MASTER, SUBJECT, LOGIN) VALUES(:idMaster, :subject, :login)");
 				$insert->execute(array(
@@ -124,6 +131,12 @@ class projectsController{
 								'left'      => $crop['left'],
 								'top'       => $crop['top']
 							));
+						$idCrop = SPDO::getInstance()->lastInsertId();
+
+						$image = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$idMaster.'.jpg');
+						$size = new Imagine\Image\Box($crop['width'], $crop['height']);
+						$point = new Imagine\Image\Point($crop['left'], $crop['top']);
+						$imageCrop = $image->crop($point, $size)->save(WEBSITE_PATH.DS.'data'.DS.'crop'.DS.$idCrop.'.jpg');
 					}
 				}
 
