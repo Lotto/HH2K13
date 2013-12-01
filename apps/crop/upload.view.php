@@ -20,8 +20,6 @@
 
 	<h1>Uploader mon Piczle</h1>
 	
-	<a class="btn btn-success" download href="<?php echo WEBSITE_LINK; ?>data/crop/<?php echo $idCrop; ?>.jpg">Télécharger le modèle</a>
-
 	<div style="
 		position: relative;
 		background-image:url(<?php echo WEBSITE_LINK.'data'.DS.'master'.DS.$master->ID.'.jpg'; ?>);
@@ -50,6 +48,7 @@
 		}
 	</style>
 	<script type="text/javascript">
+        var go = true;
 		$(function() {
 			$(document).on('dragenter', '.dropfile', function() {
 				$(this).css('border', '3px dashed red');
@@ -99,6 +98,9 @@
 				$("form").append($("<input>").attr("name", "piczle").val(piczle)).submit();
 			}
 			$(".dropfile").click(function() {
+                if (!go) {
+                    return;
+                }
 				$('#crop').val($(this).attr('idCrop'));
 				$("input[type=file]").click();
 			});
@@ -108,6 +110,47 @@
 		})
 	</script>
 
+    <script type="text/javascript">
+        $(function() {
+            $("[idCrop]").each(function(k,v) {
+                var width = Math.floor($(this).width());
+                var height = Math.floor($(this).height());
+                var taille = $("<span>").text(width+"x"+height+"px")
+                    .css("position", "absolute")
+                    .css("top", "3px")
+                    .css("left", "3px")
+                    .css("color", "white");
+                $(this).append(taille);
+
+
+                var count = $("<span>").text($(this).attr('data-count'))
+                    .css("position", "absolute")
+                    .css("bottom", "3px")
+                    .css("left", "3px")
+                    .css("color", "white");
+                $(this).append(count);
+
+                var id = $(this).attr("idCrop");
+                var button = $("<a>")
+                    .css("position", "absolute")
+                    .css("bottom", "3px")
+                    .css("right", "3px")
+                    .css("margin-bottom", "0")
+                    .css("color", "white")
+                    .addClass("btn")
+                    .append($("<li>")
+                        .addClass("glyphicon")
+                        .addClass("glyphicon-export"))
+                    .attr("download", "")
+                    .attr("href", "<?php echo WEBSITE_LINK; ?>data/crop/"+id+".jpg")
+                    .click(function() {
+                        go = false;
+                        setTimeout("go=true;", 1*1000);
+                    });
+                $(this).append(button);
+            });
+        })
+    </script>
 
 	<form action="" method="post" enctype="multipart/form-data">
 		<input type="hidden" id="crop" name="crop">
