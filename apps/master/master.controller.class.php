@@ -51,12 +51,7 @@ class masterController{
 				$image->thumbnail($sizeMiniature, 'inset')->save(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$id.'_'.$tailleMiniature.'x'.$tailleMiniature.'.jpg', array('quality' => 100));
 
                 $link = WEBSITE_LINK.'projects/create/'.$id;
-                if (!empty($_POST['master'])) {
-                    echo $link;
-                    exit;
-                } else {
-				    header('Location: '.$link);
-                }
+                header('Location: '.$link);
 			}
 		}
 
