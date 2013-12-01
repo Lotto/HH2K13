@@ -27,8 +27,8 @@
             cursor: pointer;
         }
         #dropfile:hover {
-            color: #4CAE4C;
-            border-color: #4CAE4C;
+            color: #F0AD4E;
+            border-color: #F0AD4E;
         }
     </style>
     <script type="text/javascript">
