@@ -138,7 +138,7 @@
                     .css("margin-bottom", "0")
                     .css("color", "white")
                     .addClass("btn")
-                    .append($("li")
+                    .append($("<li>")
                         .addClass("glyphicon")
                         .addClass("glyphicon-export"))
                     .attr("download", "")
