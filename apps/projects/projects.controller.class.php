@@ -171,40 +171,39 @@ class projectsController{
 
 			if (!empty($_POST)) {
 
-					$imagine = new Imagine\Gd\Imagine();
+				$imagine = new Imagine\Gd\Imagine();
 
-					$insert = SPDO::getInstance()->prepare("INSERT INTO VALID_PROJECTS(ID_PROJECT) VALUES(:idProject)");
-					$insert->execute(array(
-							'idProject' => $idProject
+				$insert = SPDO::getInstance()->prepare("INSERT INTO VALID_PROJECTS(ID_PROJECT) VALUES(:idProject)");
+				$insert->execute(array(
+						'idProject' => $idProject
+					));
+				$idValidProject = SPDO::getInstance()->lastInsertId();
+
+				$image = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$idMaster.'.jpg');
+
+				foreach ($_POST as $idCrop => $idPiczle) {
+								
+					$selectCrop = SPDO::getInstance()->prepare("SELECT * FROM  PROJECTS_CROP WHERE ID = :idCrop");
+					$selectCrop->setFetchMode(PDO::FETCH_OBJ);
+					$selectCrop->execute(array(
+						'idCrop' => $idCrop
 						));
-					$idValidProject = SPDO::getInstance()->lastInsertId();
+					$crops = $selectCrop->fetchAll();
+					$crop = $crops[0];
 
-					$image = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'master'.DS.$idMaster.'.jpg');
-
-					foreach ($_POST as $idCrop => $idPiczle) {
-									
-						$selectCrop = SPDO::getInstance()->prepare("SELECT * FROM  PROJECTS_CROP WHERE ID = :idCrop");
-						$selectCrop->setFetchMode(PDO::FETCH_OBJ);
-						$selectCrop->execute(array(
-							'idCrop' => $idCrop
-							));
-						$crops = $selectCrop->fetchAll();
-						$crop = $crops[0];
-
-						$imagePiczle = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$idPiczle.'.jpg');
-						$position = new Imagine\Image\Point($crop->LEFT, $crop->TOP);
-						$image->paste($imagePiczle, $position);
-					}
-
-					$image->save(WEBSITE_PATH.DS.'data'.DS.'valid'.DS.$idValidProject.'.jpg');
-
-					header('Location: '.WEBSITE_LINK.'home');      
-					exit();
+					$imagePiczle = $imagine->open(WEBSITE_PATH.DS.'data'.DS.'piczle'.DS.$idPiczle.'.jpg');
+					$position = new Imagine\Image\Point($crop->LEFT, $crop->TOP);
+					$image->paste($imagePiczle, $position);
 				}
-				else {
+
+				$image->save(WEBSITE_PATH.DS.'data'.DS.'valid'.DS.$idValidProject.'.jpg');
+
+				header('Location: '.WEBSITE_LINK.'home');
+				exit();
+			}
+			else {
 
 					$erreur = "N'oublie pas de renseigner un titre et au moins un crop' Piczle.";
-				}
 			}
 		}
 
