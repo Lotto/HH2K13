@@ -80,19 +80,8 @@
             reader.readAsDataURL(f);
         }
         function handleReaderLoad(evt) {
-            var pic = {};
-            pic.master = evt.target.result.split(',')[1];
-
-            var str = jQuery.param(pic);
-
-            $.ajax({
-                type: 'POST',
-                url: document.location,
-                data: str,
-                success: function(data) {
-                    document.location = data;
-                }
-            });
+            var master = evt.target.result.split(',')[1];
+            $("form").append($("<input>").attr("name", "master").val(master)).submit();
         }
             $("#dropfile").click(function() {
                 $("input[type=file]").click();
