@@ -63,4 +63,5 @@
                 <a class="btn btn-success" href="<?php echo WEBSITE_LINK ?>master" role="button">Créer un projet</a>
                 <a class="btn btn-success" href="<?php echo WEBSITE_LINK ?>projects" role="button">Participer à un projet</a>
             </p>
+            <?php getFlash(); ?>
         </div>
