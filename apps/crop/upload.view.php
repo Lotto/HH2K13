@@ -19,6 +19,8 @@
 	<?php endif ?>
 
 	<h1>Uploader mon Piczle</h1>
+
+<?php require_once(WEBSITE_PATH."tpl/default_fo/share.php"); ?>
 	
 	<div style="
 		position: relative;

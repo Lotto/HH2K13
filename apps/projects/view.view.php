@@ -1,4 +1,5 @@
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js" type="text/javascript"></script>
+<?php require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php"); ?>
+
 <script type="text/javascript">
  
 $(document).ready(function(){
@@ -71,9 +72,10 @@ border : none;
 
 
 <?php
-require_once(WEBSITE_PATH."tpl/default_fo/header.tpl.php");
 
 echo '<h2>'.$crops[0]->PROJECT_SUBJECT.' - '.$crops[0]->PROJECT_LOGIN.'</h2>';
+
+require_once(WEBSITE_PATH."tpl/default_fo/share.php");
 
 echo '<div style="position:relative;background-image:url('.WEBSITE_LINK.'data'.DS.'master'.DS.$crops[0]->MASTER_ID.'.jpg);width: '.$crops[0]->MASTER_WIDTH.'px; height: '.$crops[0]->MASTER_HEIGHT.'px;">';
 
