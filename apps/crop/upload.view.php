@@ -22,93 +22,97 @@
 	
 	<a class="btn btn-success" download href="<?php echo WEBSITE_LINK; ?>data/crop/<?php echo $idCrop; ?>.jpg">Télécharger le modèle</a>
 
-    <div id="dropfile">
-        <p>Déposer une image de votre ordinateur</p>
-        <p>ou</p>
-        <p>Cliquer pour ouvrir le navigateur de fichier</p>
-    </div>
-    <style>
-        #dropfile {
-            width: 100%;
-            border: 3px dashed #BBBBBB;
-            font-size: 20px;
-            line-height:40px;
-            text-align: center;
-            cursor: pointer;
-        }
-        #dropfile:hover {
-            color: #4CAE4C;
-            border-color: #4CAE4C;
-        }
-    </style>
-    <script type="text/javascript">
-        $(function() {
-            $(document).on('dragenter', '#dropfile', function() {
-                $(this).css('border', '3px dashed red');
-                return false;
-            });
+	<div style="
+		position: relative;
+		background-image:url(<?php echo WEBSITE_LINK.'data'.DS.'master'.DS.$master->ID.'.jpg'; ?>);
+		width: <?php echo $master->WIDTH; ?>px; 
+		height: <?php echo $master->HEIGHT; ?>px;
+		">
+		<?php foreach ($crops as $key => $crop): ?>
+			
+			<div class="dropfile" idCrop="<?php echo $crop->ID; ?>" style="
+				display: block;
+				position: absolute;
+				left:<?php echo $crop->LEFT; ?>px;
+				top: <?php echo $crop->TOP; ?>px;
+				width: <?php echo $crop->WIDTH; ?>px;
+				height: <?php echo $crop->HEIGHT; ?>px;
+				background-color: black;
+				opacity:0.5;
+				border: 1px solid red;
+				">
+			</div>
+		<?php endforeach ?>
+	</div>
+	<style>
+		.dropfile {
+			cursor: pointer;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function() {
+			$(document).on('dragenter', '.dropfile', function() {
+				$(this).css('border', '3px dashed red');
+				return false;
+			});
 
-            $(document).on('dragover', '#dropfile', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                $(this).css('border', '3px dashed red');
-                return false;
-            });
+			$(document).on('dragover', '.dropfile', function(e){
+				e.preventDefault();
+				e.stopPropagation();
+				$(this).css('border', '3px dashed red');
+				return false;
+			});
 
-            $(document).on('dragleave', '#dropfile', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                $(this).css('border', '3px dashed #BBBBBB');
-                return false;
-            });
-            $(document).on('drop', '#dropfile', function(e) {
-                if(e.originalEvent.dataTransfer){
-                    if(e.originalEvent.dataTransfer.files.length) {
-                        // Stop the propagation of the event
-                        e.preventDefault();
-                        e.stopPropagation();
-                        $(this).css('border', '3px dashed green');
-                        // Main function to upload
-                        upload(e.originalEvent.dataTransfer.files);
-                    }
-                    else {
-                        $(this).css('border', '3px dashed #BBBBBB');
-                    }
-                }
-                else {
-                    $(this).css('border', '3px dashed #BBBBBB');
-                }
-                return false;
-            });
-            function upload(files) {
-                var f = files[0] ;
+			$(document).on('dragleave', '.dropfile', function(e) {
+				e.preventDefault();
+				e.stopPropagation();
+				$(this).css('border', '3px dashed #BBBBBB');
+				return false;
+			});
+			$(document).on('drop', '.dropfile', function(e) {
+				if(e.originalEvent.dataTransfer){
+					if(e.originalEvent.dataTransfer.files.length) {
+						// Stop the propagation of the event
+						e.preventDefault();
+						e.stopPropagation();
+						$('#crop').val($(this).attr('idCrop'));
+						// Main function to upload
+						upload(e.originalEvent.dataTransfer.files);
+					}
+				}
+				return false;
+			});
+			function upload(files) {
+				var f = files[0] ;
 
-                var reader = new FileReader();
+				var reader = new FileReader();
 
-                // When the image is loaded,
-                // run handleReaderLoad function
-                reader.onload = handleReaderLoad;
+				// When the image is loaded,
+				// run handleReaderLoad function
+				reader.onload = handleReaderLoad;
 
-                // Read in the image file as a data URL.
-                reader.readAsDataURL(f);
-            }
-            function handleReaderLoad(evt) {
-                var piczle = evt.target.result.split(',')[1];
-                $("form").append($("<input>").attr("name", "piczle").val(piczle)).submit();
-            }
-            $("#dropfile").click(function() {
-                $("input[type=file]").click();
-            });
-            $("input[type=file]").change(function() {
-                $("form").submit();
-            })
-        })
-    </script>
+				// Read in the image file as a data URL.
+				reader.readAsDataURL(f);
+			}
+			function handleReaderLoad(evt) {
+				var piczle = evt.target.result.split(',')[1];
+				$("form").append($("<input>").attr("name", "piczle").val(piczle)).submit();
+			}
+			$(".dropfile").click(function() {
+				$('#crop').val($(this).attr('idCrop'));
+				$("input[type=file]").click();
+			});
+			$("input[type=file]").change(function() {
+				$("form").submit();
+			})
+		})
+	</script>
 
 
-    <form action="" method="post" enctype="multipart/form-data">
-        <input style="display:none" type="file" id="piczle" name="piczle">
-    </form>
+	<form action="" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="crop" name="crop">
+		<input style="display:none" type="file" id="piczle" name="piczle">
+	</form>
 	
 <?php endif ?>
 
