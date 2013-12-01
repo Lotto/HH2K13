@@ -4,7 +4,7 @@ class masterController{
 
 	function master(){
 		$tailleMiniature = 255;
-		$tailleImage = 700;
+		$tailleImage = 1000;
 
         if (!empty($_POST['master'])) { // AJAX DRAG & DROP
             $file = $_POST['master'];
