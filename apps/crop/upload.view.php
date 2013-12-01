@@ -136,6 +136,7 @@
                     .css("bottom", "3px")
                     .css("right", "3px")
                     .css("margin-bottom", "0")
+                    .css("color", "white")
                     .addClass("btn")
                     .append($("li")
                         .addClass("glyphicon")
