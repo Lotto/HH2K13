@@ -22,7 +22,7 @@ if(isset($projects) && !empty($projects)){
 		
 
 		foreach($arrayCrops[$project->PROJECT_ID] as $crop){
-			echo '<div style="display: block; position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid red;"></div>';
+			echo '<div style="display: block; position: absolute; left:'.$crop->CROP_LEFT.'px; top: '.$crop->CROP_TOP.'px;width: '.$crop->CROP_WIDTH.'px; height: '.$crop->CROP_HEIGHT.'px;background-color: black;opacity:0.5;border: 1px solid #F0AD4E;"></div>';
 		}
 
 		if ($project->NB_CONTRIB == 0) {

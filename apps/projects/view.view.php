@@ -62,7 +62,7 @@ border : none;
 .imageNotSelected {
 	background-color: black;
 	opacity:0.5;
-	border: 1px solid red;
+	border: 1px solid #F0AD4E;
 }
 
 .btn {
