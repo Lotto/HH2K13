@@ -20,7 +20,7 @@
 
 	<h1>Uploader mon Piczle</h1>
 	
-	<a class="btn btn-success"  download="CreativeJuiz_Background" href="<?php echo WEBSITE_LINK; ?>data/crop/<?php echo $idCrop; ?>.jpg">Télécharger le modèle</a>
+	<a class="btn btn-success" download href="<?php echo WEBSITE_LINK; ?>data/crop/<?php echo $idCrop; ?>.jpg">Télécharger le modèle</a>
 
     <div id="dropfile">
         <p>Déposer une image de votre ordinateur</p>
